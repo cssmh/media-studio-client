@@ -1,12 +1,13 @@
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContextCine } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
   const [view, setView] = useState(true);
+  const navigateTo = useNavigate();
   const { createUser } = useContext(AuthContextCine);
 
   const handleRegister = (e) => {
@@ -26,6 +27,7 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("User register success");
+        navigateTo("/");
       })
       .catch((err) => toast.error(err.message));
   };

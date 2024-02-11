@@ -15,7 +15,7 @@ const Entertainment = () => {
 
   return (
     <div className="my-7 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-semibold text-center mb-9">
+      <h1 className="text-3xl font-semibold text-center mb-9">
         Entertainment and Media
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
