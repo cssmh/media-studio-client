@@ -17,16 +17,16 @@
   {
     "id": 4,
     "name": "Spotify",
-    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/spotify.jpeg"
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/spotify.png"
   },
   {
     "id": 5,
     "name": "Time Warner",
-    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/time-warner.webp"
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/time-warner.png"
   },
   {
     "id": 6,
     "name": "Warner Bros",
-    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/warner_bros.webp"
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/warner_bro.png"
   }
 ]
