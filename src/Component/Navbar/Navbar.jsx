@@ -1,6 +1,13 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "/logo.png";
+import { useContext } from "react";
+import { AuthContextCine } from "../../AuthProvider/AuthProvider";
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContextCine);
+  const handleLogout = () => {
+    logOut().then().catch();
+  };
+
   const allNav = (
     <>
       <li>
@@ -16,7 +23,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-200 mt-6 mb-3">
+    <div className="navbar bg-base-200 mt-6 mb-3 px-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -49,7 +56,36 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{allNav}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Login</a>
+        {user?.email ? (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-12 rounded-full">
+                <img src={user?.photoURL} alt={user?.displayName} />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <button className="btn btn-sm  btn-ghost">
+                  {user?.displayName ? user?.displayName : "No Name found!"}
+                </button>
+              </li>
+              <li>
+                <button onClick={handleLogout} className="btn btn-sm btn-ghost">
+                  Logout
+                </button>
+              </li>
+            </ul>
+          </div>
+        ) : (
+          <Link to="/login">
+            <button className="btn btn-sm  btn-outline btn-success">
+              <span className="text-black">Login</span>
+            </button>
+          </Link>
+        )}
       </div>
     </div>
   );
