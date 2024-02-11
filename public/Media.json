@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "JDisney",
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/Disney.png"
+  },
+  {
+    "id": 2,
+    "name": "Netflix",
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/Netflix.png"
+  },
+  {
+    "id": 3,
+    "name": "Sony Pictures",
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/sony-pictures.webp"
+  },
+  {
+    "id": 4,
+    "name": "Spotify",
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/spotify.jpeg"
+  },
+  {
+    "id": 5,
+    "name": "Time Warner",
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/time-warner.webp"
+  },
+  {
+    "id": 6,
+    "name": "Warner Bros",
+    "image_url": "https://raw.githubusercontent.com/cssmh/media-studio-client/main/public/medias/warner_bros.webp"
+  }
+]
