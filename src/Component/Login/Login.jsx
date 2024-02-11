@@ -1,6 +1,6 @@
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useState } from "react";
 import { AuthContextCine } from "../../AuthProvider/AuthProvider";
@@ -9,6 +9,9 @@ import toast from "react-hot-toast";
 const Login = () => {
   const [view, setView] = useState(true);
   const { loginUser, googlePopupLogin } = useContext(AuthContextCine);
+  const loc = useLocation();
+  const navigateTo = useNavigate();
+  // console.log(loc);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,6 +23,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("User Login success");
+        navigateTo(loc?.state ? loc?.state : "/");
       })
       .catch((err) => toast.error(err.message));
   };
@@ -29,6 +33,7 @@ const Login = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("User Google Login success");
+        navigateTo(loc?.state ? loc?.state : "/");
       })
       .catch((err) => toast.error(err.message));
   };
