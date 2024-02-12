@@ -5,7 +5,11 @@ const CineDetailCard = ({ getCard }) => {
   const { _id, name, image, media, media_type, price, description, rating } =
     getCard;
   return (
-    <div className="card bg-base-100 shadow-xl">
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="bottom-center"
+      className="card bg-base-100 shadow-xl"
+    >
       <figure>
         <img src={image} alt="cine" className="w-52 pt-5" />
       </figure>
