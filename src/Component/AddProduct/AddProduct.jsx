@@ -22,7 +22,7 @@ const AddProduct = () => {
       rating,
     };
 
-    fetch("http://localhost:5000/cine", {
+    fetch("https://cinemix-server.vercel.app/cine", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -14,7 +14,7 @@ const MyCartCard = ({ getCart, cart, setCart }) => {
     }).then((willDelete) => {
       if (willDelete) {
         // main code
-        fetch(`http://localhost:5000/cart/${idx}`, {
+        fetch(`https://cinemix-server.vercel.app/cart/${idx}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

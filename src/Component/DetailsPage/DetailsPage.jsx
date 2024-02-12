@@ -17,7 +17,7 @@ const DetailsPage = () => {
     rating: rating,
   };
   const handleAddCart = () => {
-    fetch("http://localhost:5000/cart", {
+    fetch("https://cinemix-server.vercel.app/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -39,7 +39,7 @@ const DetailsPage = () => {
       <div className="space-y-1">
         <h1 className="text-3xl">{name}</h1>
         <p>{price} BDT</p>
-        <p>{description}</p>
+        <p className="w-96">{description}</p>
         <button
           onClick={handleAddCart}
           className="btn mt-1 bg-green-500 text-white"
