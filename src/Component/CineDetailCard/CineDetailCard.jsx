@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 const CineDetailCard = ({ getCard }) => {
-//   console.log(getCard);
+  //   console.log(getCard);
   const { _id, name, image, media, media_type, price, description, rating } =
     getCard;
   return (
@@ -23,9 +23,11 @@ const CineDetailCard = ({ getCard }) => {
         </p>
         <p>{description}</p>
         <div className="card-actions justify-center">
-          <button className="btn bg-green-500 hover:bg-green-500 text-white">
-            Details
-          </button>
+          <Link to={`/details/${_id}`}>
+            <button className="btn bg-green-500 hover:bg-green-500 text-white">
+              Details
+            </button>
+          </Link>
           <Link to={`/update/${_id}`}>
             <button className="btn bg-green-500 hover:bg-green-500 text-white">
               Update

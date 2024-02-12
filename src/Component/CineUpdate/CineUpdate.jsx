@@ -1,6 +1,7 @@
+import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-const UpdateCine = () => {
+const CineUpdate = () => {
   const loadAllData = useLoaderData();
   const { _id, name, image, media, media_type, price, description, rating } =
     loadAllData;
@@ -36,6 +37,7 @@ const UpdateCine = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
+          toast.success(`${name} update successfully`);
           navigateTo(-1);
         }
       });
@@ -151,4 +153,4 @@ const UpdateCine = () => {
   );
 };
 
-export default UpdateCine;
+export default CineUpdate;
