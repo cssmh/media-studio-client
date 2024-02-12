@@ -33,7 +33,7 @@ const Register = () => {
   };
 
   return (
-    <div className="hero min-h-[80vh]">
+    <div data-aos="flip-right" className="hero min-h-[80vh]">
       <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
         <h1 className="text-custom-blue text-2xl text-center pt-6 font-semibold border-b pb-6 mx-8">
           Register your account

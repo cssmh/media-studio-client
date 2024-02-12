@@ -9,11 +9,13 @@ import MyCart from "../Component/MyCart/MyCart";
 import CineDetails from "../Component/CineDetails/CineDetails";
 import CineUpdate from "../Component/CineUpdate/CineUpdate";
 import DetailsPage from "../Component/DetailsPage/DetailsPage";
+import ErrorPage from "../Component/ErrorPage/ErrorPage";
 
 const Root = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
