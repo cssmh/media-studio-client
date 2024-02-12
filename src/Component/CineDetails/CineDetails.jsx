@@ -25,7 +25,7 @@ const CineDetails = () => {
       ) : (
         ""
       )}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-5xl mx-auto my-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto my-12">
         {matching.map((data) => (
           <CineDetailCard key={data._id} getCard={data}></CineDetailCard>
         ))}

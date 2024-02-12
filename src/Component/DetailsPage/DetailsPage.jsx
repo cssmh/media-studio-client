@@ -36,8 +36,8 @@ const DetailsPage = () => {
   return (
     <div className="font-semibold space-y-1 flex justify-center gap-5 items-center mt-10">
       <img src={image} className="w-64" alt={`${name} photo not found`} />
-      <div>
-        <h1 className="text-2xl">{name}</h1>
+      <div className="space-y-1">
+        <h1 className="text-3xl">{name}</h1>
         <p>{price} BDT</p>
         <p>{description}</p>
         <button

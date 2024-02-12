@@ -7,9 +7,9 @@ const CineDetailCard = ({ getCard }) => {
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure>
-        <img src={image} alt="cine" className="w-52" />
+        <img src={image} alt="cine" className="w-52 pt-5" />
       </figure>
-      <div className="card-body font-semibold">
+      <div className="card-body px-11 py-5 font-semibold">
         <h2 className="card-title text-2xl">{name}</h2>
         <p>
           <span className="text-green-500">{media}</span>{" "}
