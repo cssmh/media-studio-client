@@ -5,12 +5,8 @@ const CineDetailCard = ({ getCard }) => {
   const { _id, name, image, media, media_type, price, description, rating } =
     getCard;
   return (
-    <div
-      data-aos="fade-up"
-      data-aos-anchor-placement="bottom-center"
-      className="card bg-base-100 shadow-xl"
-    >
-      <figure>
+    <div className="card bg-base-100 shadow-xl">
+      <figure data-aos="zoom-in">
         <img src={image} alt="cine" className="w-52 pt-5" />
       </figure>
       <div className="card-body px-11 py-5 font-semibold">
