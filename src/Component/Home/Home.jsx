@@ -4,7 +4,7 @@ import Entertainment from "../Entertainment/Entertainment";
 const Home = () => {
   return (
     <div>
-      <img src={Banner} alt="" />
+      <img src={Banner} className="rounded-md" alt="" />
       <Entertainment></Entertainment>
     </div>
   );
