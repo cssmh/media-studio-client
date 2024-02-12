@@ -5,7 +5,7 @@ import CineDetailCard from "../CineDetailCard/CineDetailCard";
 
 const CineDetails = () => {
   const [matching, setMatching] = useState([]);
-  console.log(matching);
+  // console.log(matching);
 
   const loaderData = useLoaderData();
   const paramsName = useParams();

@@ -1,12 +1,48 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateCine = () => {
   const loadAllData = useLoaderData();
-  const { name, image, media, media_type, price, description, rating } =
+  const { _id, name, image, media, media_type, price, description, rating } =
     loadAllData;
+  const navigateTo = useNavigate();
+
+  const handleUpdate = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const image = form.image.value;
+    const media = form.media_name.value;
+    const media_type = form.media_type.value;
+    const price = form.price.value;
+    const description = form.description.value;
+    const rating = form.rating.value;
+    const updatedData = {
+      name,
+      image,
+      media,
+      media_type,
+      price,
+      description,
+      rating,
+    };
+    fetch(`http://localhost:5000/cine/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updatedData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.modifiedCount > 0) {
+          navigateTo(-1);
+        }
+      });
+  };
 
   return (
-    <form className="md:w-3/4 lg:w-1/2 mx-2 md:mx-auto">
+    <form onSubmit={handleUpdate} className="md:w-3/4 lg:w-1/2 mx-2 md:mx-auto">
       <div className="form-control">
         <label className="label">
           <span className="label-text">Name</span>
@@ -36,7 +72,7 @@ const UpdateCine = () => {
           <span className="label-text">Cinemix Name</span>
         </label>
         <select
-          id="n"
+          id="1"
           name="media_name"
           className="input input-bordered"
           defaultValue={media}
@@ -54,7 +90,7 @@ const UpdateCine = () => {
           <span className="label-text">Type</span>
         </label>
         <select
-          id="to"
+          id="2"
           name="media_type"
           className="input input-bordered"
           defaultValue={media_type}
