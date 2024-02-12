@@ -6,6 +6,7 @@ import Register from "../Component/Register/Register";
 import AddProduct from "../Component/AddProduct/AddProduct";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import MyCart from "../Component/MyCart/MyCart";
+import CineDetails from "../Component/CineDetails/CineDetails";
 
 const Root = createBrowserRouter([
   {
@@ -26,13 +27,26 @@ const Root = createBrowserRouter([
       },
       {
         path: "/add-product",
-        element: <PrivateRoute><AddProduct/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <AddProduct />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/my-cart",
-        element: <PrivateRoute><MyCart/></PrivateRoute>
+        element: (
+          <PrivateRoute>
+            <MyCart />
+          </PrivateRoute>
+        ),
       },
-    ]
+      {
+        path: "/:id",
+        element: <CineDetails></CineDetails>,
+        loader: () => fetch("http://localhost:5000/cine"),
+      },
+    ],
   },
 ]);
 

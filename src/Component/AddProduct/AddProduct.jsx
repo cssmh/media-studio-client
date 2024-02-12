@@ -1,3 +1,5 @@
+import swal from "sweetalert";
+
 const AddProduct = () => {
   const handleAddCine = (e) => {
     e.preventDefault();
@@ -9,7 +11,32 @@ const AddProduct = () => {
     const price = form.price.value;
     const description = form.description.value;
     const rating = form.rating.value;
-    console.log(name, image, media, media_type, price, description, rating);
+    // console.log(name, image, media, media_type, price, description, rating);
+    const getCine = {
+      name,
+      image,
+      media,
+      media_type,
+      price,
+      description,
+      rating,
+    };
+
+    fetch("http://localhost:5000/cine", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(getCine),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          form.reset();
+          swal("Good job!", "Cinexmix added!", "success");
+        }
+      });
   };
 
   return (
@@ -21,13 +48,23 @@ const AddProduct = () => {
         <label className="label">
           <span className="label-text">Name</span>
         </label>
-        <input type="text" name="name" className="input input-bordered" required />
+        <input
+          type="text"
+          name="name"
+          className="input input-bordered"
+          required
+        />
       </div>
       <div className="form-control">
         <label className="label">
           <span className="label-text">Image Url</span>
         </label>
-        <input type="text" name="image" className="input input-bordered" required />
+        <input
+          type="text"
+          name="image"
+          className="input input-bordered"
+          required
+        />
       </div>
       <div className="form-control">
         <label className="label">
