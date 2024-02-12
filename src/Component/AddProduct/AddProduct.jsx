@@ -34,7 +34,7 @@ const AddProduct = () => {
         console.log(data);
         if (data.insertedId) {
           form.reset();
-          swal("Good job!", "Cinexmix added!", "success");
+          swal("Good job!", "Cinemix added!", "success");
         }
       });
   };
