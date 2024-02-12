@@ -7,6 +7,7 @@ import AddProduct from "../Component/AddProduct/AddProduct";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import MyCart from "../Component/MyCart/MyCart";
 import CineDetails from "../Component/CineDetails/CineDetails";
+import UpdateCine from "../Component/UpdateCine/UpdateCine";
 
 const Root = createBrowserRouter([
   {
@@ -45,6 +46,16 @@ const Root = createBrowserRouter([
         path: "/:id",
         element: <CineDetails></CineDetails>,
         loader: () => fetch("http://localhost:5000/cine"),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateCine />
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cine/${params.id}`),
       },
     ],
   },

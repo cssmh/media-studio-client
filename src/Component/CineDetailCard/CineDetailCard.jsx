@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const CineDetailCard = ({ getCard }) => {
-  console.log(getCard);
-  const { name, image, media, media_type, price, description, rating } =
+//   console.log(getCard);
+  const { _id, name, image, media, media_type, price, description, rating } =
     getCard;
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -14,7 +15,9 @@ const CineDetailCard = ({ getCard }) => {
           <span className="text-green-500">{media}</span>{" "}
           <span className="text-red-500">{media_type}</span>{" "}
         </p>
-        <p>Price: <span className="text-blue-500">{price}</span> BDT</p>
+        <p>
+          Price: <span className="text-blue-500">{price}</span> BDT
+        </p>
         <p>
           Rating: <span className="text-yellow-700">{rating}</span>
         </p>
@@ -23,9 +26,11 @@ const CineDetailCard = ({ getCard }) => {
           <button className="btn bg-green-500 hover:bg-green-500 text-white">
             Details
           </button>
-          <button className="btn bg-green-500 hover:bg-green-500 text-white">
-            Update
-          </button>
+          <Link to={`/update/${_id}`}>
+            <button className="btn bg-green-500 hover:bg-green-500 text-white">
+              Update
+            </button>
+          </Link>
         </div>
       </div>
     </div>
