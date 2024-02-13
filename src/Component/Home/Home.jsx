@@ -1,11 +1,13 @@
-import Banner from "../../assets/banner/2.jpg";
+import Banner from "../Banner/Banner";
 import Entertainment from "../Entertainment/Entertainment";
+import MovieReview from "../MovieReview/MovieReview";
 
 const Home = () => {
   return (
     <div>
-      <img src={Banner} className="rounded-md" alt="" />
+      <Banner></Banner>
       <Entertainment></Entertainment>
+      <MovieReview></MovieReview>
     </div>
   );
 };
