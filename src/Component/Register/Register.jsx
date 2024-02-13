@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 const Register = () => {
   const [view, setView] = useState(true);
   const navigateTo = useNavigate();
-  const { createUser, updateUser, emailVerification } =
+  const { createUser, updateUser, emailVerification, logOut } =
     useContext(AuthContextCine);
 
   const handleRegister = (e) => {
@@ -20,10 +20,12 @@ const Register = () => {
     const password = form.password.value;
     // console.log(email, password);
     if (password.length < 6) {
-      toast.error("Password must be at least 6 character or more");
+      toast.error(
+        "Password must be at least 6 character and one uppercase letter"
+      );
       return;
     } else if (!/^(?=.*[A-Z]).+$/.test(password)) {
-      toast.error("Add at least one uppercase letter in your password");
+      toast.error("Add at least one uppercase letter");
       return;
     }
     createUser(email, password)
@@ -35,9 +37,14 @@ const Register = () => {
             emailVerification()
               .then(toast.success("Check your email to verify your account!"))
               .catch((err) => toast.error(err.message));
-            navigateTo("/login");
           })
           .catch((err) => toast.error(err.message));
+        if (!res.emailVerified) {
+          logOut().then().catch();
+          navigateTo("/login");
+        } else {
+          navigateTo("/");
+        }
       })
       .catch((err) => toast.error(err.message));
   };

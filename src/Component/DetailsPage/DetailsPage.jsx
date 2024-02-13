@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
 const DetailsPage = () => {
@@ -33,6 +33,11 @@ const DetailsPage = () => {
       });
   };
 
+  const navigateTo = useNavigate();
+  const BackButton = () => {
+    navigateTo(-1);
+  };
+
   return (
     <div className="font-semibold space-y-1 flex justify-center gap-5 items-center mt-10 mx-2 md:mx-0">
       <img src={image} className="w-64" alt={`${name} photo not found`} />
@@ -45,6 +50,13 @@ const DetailsPage = () => {
           className="btn mt-1 bg-green-500 text-white"
         >
           Add to Cart
+        </button>
+        <br></br>
+        <button
+          onClick={BackButton}
+          className="btn mt-1 bg-green-500 text-white"
+        >
+          Go Back
         </button>
       </div>
     </div>
