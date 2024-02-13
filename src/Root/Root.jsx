@@ -44,12 +44,12 @@ const Root = createBrowserRouter([
             <MyCart />
           </PrivateRoute>
         ),
-        loader: () => fetch("https://cinemix-server.vercel.app/cart"),
+        loader: () => fetch("https://cinemix-pi.vercel.app/cart"),
       },
       {
         path: "/:id",
         element: <CineDetails></CineDetails>,
-        loader: () => fetch("https://cinemix-server.vercel.app/cine"),
+        loader: () => fetch("https://cinemix-pi.vercel.app/cine"),
       },
       {
         path: "/update/:id",
@@ -59,7 +59,7 @@ const Root = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cinemix-server.vercel.app/cine/${params.id}`),
+          fetch(`https://cinemix-pi.vercel.app/cine/${params.id}`),
       },
       {
         path: "/details/:id",
@@ -69,7 +69,7 @@ const Root = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cinemix-server.vercel.app/cine/${params.id}`),
+          fetch(`https://cinemix-pi.vercel.app/cine/${params.id}`),
       },
     ],
   },

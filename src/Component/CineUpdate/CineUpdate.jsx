@@ -26,7 +26,7 @@ const CineUpdate = () => {
       description,
       rating,
     };
-    fetch(`https://cinemix-server.vercel.app/cine/${_id}`, {
+    fetch(`https://cinemix-pi.vercel.app/cine/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

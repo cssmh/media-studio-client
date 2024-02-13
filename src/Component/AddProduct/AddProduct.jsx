@@ -22,16 +22,13 @@ const AddProduct = () => {
       rating,
     };
 
-    fetch(
-      "https://cinemix-server.vercel.app/cine",
-      {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(getCine),
-      }
-    )
+    fetch("https://cinemix-pi.vercel.app/cine", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(getCine),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

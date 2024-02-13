@@ -17,7 +17,7 @@ const DetailsPage = () => {
     rating: rating,
   };
   const handleAddCart = () => {
-    fetch("https://cinemix-server.vercel.app/cart", {
+    fetch("https://cinemix-pi.vercel.app/cart", {
       method: "POST",
       headers: {
         "content-type": "application/json",
