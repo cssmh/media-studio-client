@@ -14,7 +14,7 @@ const Entertainment = () => {
   });
 
   return (
-    <div className="my-7 max-w-5xl mx-auto">
+    <div className="my-7">
       <h1 className="text-3xl font-semibold text-center mb-9">
         Entertainment and Media
       </h1>
