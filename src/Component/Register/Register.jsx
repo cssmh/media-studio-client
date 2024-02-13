@@ -8,14 +8,17 @@ import toast from "react-hot-toast";
 const Register = () => {
   const [view, setView] = useState(true);
   const navigateTo = useNavigate();
-  const { createUser } = useContext(AuthContextCine);
+  const { createUser, updateUser, emailVerification } =
+    useContext(AuthContextCine);
 
   const handleRegister = (e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+    // console.log(email, password);
     if (password.length < 6) {
       toast.error("Password must be at least 6 character or more");
       return;
@@ -27,7 +30,14 @@ const Register = () => {
       .then((res) => {
         console.log(res.user);
         toast.success("User register success");
-        navigateTo("/");
+        updateUser(name, photo)
+          .then(() => {
+            emailVerification()
+              .then(toast.success("Check your email to verify your account!"))
+              .catch((err) => toast.error(err.message));
+            navigateTo("/login");
+          })
+          .catch((err) => toast.error(err.message));
       })
       .catch((err) => toast.error(err.message));
   };
@@ -39,6 +49,29 @@ const Register = () => {
           Register your account
         </h1>
         <form onSubmit={handleRegister} className="card-body py-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Your Name</span>
+            </label>
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter Your Name"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text font-semibold">Photo URL</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="Enter your Photo URL"
+              className="input input-bordered"
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text font-semibold">Email address</span>

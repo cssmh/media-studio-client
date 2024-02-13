@@ -2,13 +2,14 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContextCine } from "../../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const [view, setView] = useState(true);
-  const { loginUser, googlePopupLogin } = useContext(AuthContextCine);
+  const { user, loginUser, googlePopupLogin, logOut, resetPassword } =
+    useContext(AuthContextCine);
   const loc = useLocation();
   const navigateTo = useNavigate();
   // console.log(loc);
@@ -18,6 +19,13 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    if (user) {
+      if (!user.emailVerified) {
+        logOut().then().catch();
+        toast.error("Verify your Email first please!");
+        return;
+      }
+    }
     // console.log(email, password);
     loginUser(email, password)
       .then((res) => {
@@ -38,6 +46,19 @@ const Login = () => {
       .catch((err) => toast.error(err.message));
   };
 
+  const getEmail = useRef(null);
+  const handleForgotPassword = () => {
+    const email = getEmail.current.value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      toast.error("Give me a valid email in email field");
+      return;
+    } else {
+      resetPassword(email)
+        .then(toast.success("reset email sent!"))
+        .catch((err) => toast.error(err.message));
+    }
+  };
+
   return (
     <div className="hero min-h-[70vh]">
       <div className="card shrink-0 w-full max-w-md shadow-2xl bg-base-100">
@@ -51,6 +72,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              ref={getEmail}
               name="email"
               placeholder="Enter your email address"
               className="input input-bordered"
@@ -76,7 +98,7 @@ const Login = () => {
             </span>
             <label className="label">
               <a
-                href="#"
+                onClick={handleForgotPassword}
                 className="label-text-alt link link-hover font-semibold"
               >
                 Forgot password?

@@ -7,7 +7,7 @@ const MovieReview = () => {
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 my-10 gap-4">
         <div
-          data-aos="fade-down-left"
+          data-aos="zoom-in"
           className="border bg-gray-200 py-7 rounded-md space-y-2 text-center"
         >
           <img
@@ -27,7 +27,7 @@ const MovieReview = () => {
           </p>
         </div>
         <div
-          data-aos="fade-down-right"
+          data-aos="zoom-in"
           className="border bg-gray-200 py-7 rounded-md space-y-2 text-center"
         >
           <img
@@ -47,7 +47,7 @@ const MovieReview = () => {
           </p>
         </div>
         <div
-          data-aos="fade-down-left"
+          data-aos="zoom-in"
           className="border bg-gray-200 py-7 rounded-md space-y-2 text-center"
         >
           <img
@@ -70,7 +70,7 @@ const MovieReview = () => {
           </p>
         </div>
         <div
-          data-aos="fade-down-right"
+          data-aos="zoom-in"
           className="border bg-gray-200 py-7 rounded-md space-y-2 text-center"
         >
           <img
