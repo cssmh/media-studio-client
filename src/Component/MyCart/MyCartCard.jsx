@@ -1,3 +1,4 @@
+import axios from "axios";
 import PropTypes from "prop-types";
 import swal from "sweetalert";
 const MyCartCard = ({ getCart, cart, setCart }) => {
@@ -14,13 +15,11 @@ const MyCartCard = ({ getCart, cart, setCart }) => {
     }).then((willDelete) => {
       if (willDelete) {
         // main code
-        fetch(`https://cinemix-pi.vercel.app/cart/${idx}`, {
-          method: "DELETE",
-        })
-          .then((res) => res.json())
+        // using axios method
+        axios
+          .delete(`https://cinemix-pi.vercel.app/cart/${idx}`)
           .then((data) => {
-            // console.log(data);
-            if (data.deletedCount > 0) {
+            if (data.data.deletedCount > 0) {
               const remaining = cart.filter((solo) => solo._id !== idx);
               setCart(remaining);
               swal(`${name} deleted from Cart!`, {
@@ -28,6 +27,21 @@ const MyCartCard = ({ getCart, cart, setCart }) => {
               });
             }
           });
+        // using fetch method
+        // fetch(`https://cinemix-pi.vercel.app/cart/${idx}`, {
+        //   method: "DELETE",
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     // console.log(data);
+        //     if (data.deletedCount > 0) {
+        //       const remaining = cart.filter((solo) => solo._id !== idx);
+        //       setCart(remaining);
+        //       swal(`${name} deleted from Cart!`, {
+        //         icon: "success",
+        //       });
+        //     }
+        //   });
         // main code end here
       } else {
         swal("Your file is safe!");

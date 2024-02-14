@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 
@@ -17,20 +18,29 @@ const DetailsPage = () => {
     rating: rating,
   };
   const handleAddCart = () => {
-    fetch("https://cinemix-pi.vercel.app/cart", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(dataToDatabase),
-    })
-      .then((res) => res.json())
+    // using axios method
+    axios
+      .post("https://cinemix-pi.vercel.app/cart", dataToDatabase)
       .then((data) => {
-        // console.log(data);
-        if (data.insertedId) {
+        if (data.data.insertedId) {
           swal("Good job!", `${name} added to cart`, "success");
         }
       });
+      // using fetch method
+    // fetch("https://cinemix-pi.vercel.app/cart", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(dataToDatabase),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     // console.log(data);
+    //     if (data.insertedId) {
+    //       swal("Good job!", `${name} added to cart`, "success");
+    //     }
+    //   });
   };
 
   const navigateTo = useNavigate();

@@ -1,3 +1,4 @@
+import axios from "axios";
 import swal from "sweetalert";
 
 const AddProduct = () => {
@@ -21,22 +22,29 @@ const AddProduct = () => {
       description,
       rating,
     };
-
-    fetch("https://cinemix-pi.vercel.app/cine", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(getCine),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.insertedId) {
-          form.reset();
-          swal("Good job!", "Cinemix added!", "success");
-        }
-      });
+    // using axios method
+    axios.post("https://cinemix-pi.vercel.app/cine", getCine).then((data) => {
+      if (data.data.insertedId) {
+        form.reset();
+        swal("Good job!", `${name} added!`, "success");
+      }
+    });
+    // using fetch method
+    // fetch("https://cinemix-pi.vercel.app/cine", {
+    //   method: "POST",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(getCine),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.insertedId) {
+    //       form.reset();
+    //       swal("Good job!", `${name} added!`, "success");
+    //     }
+    //   });
   };
 
   return (
@@ -85,11 +93,9 @@ const AddProduct = () => {
         </label>
         <select id="t" name="media_type" className="input input-bordered">
           <option value="Movie">Movie</option>
-          <option value="Series">Series</option>
+          <option value="Series">TV Series</option>
           <option value="Animation">Animation</option>
-          <option value="Telefilm">Telefilm</option>
-          <option value="Show">TV Series</option>
-          <option value="Cartoon">Cartoon</option>
+          <option value="Anime">Anime</option>
         </select>
       </div>
       <div className="form-control">

@@ -1,3 +1,4 @@
+import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
@@ -26,23 +27,35 @@ const CineUpdate = () => {
       description,
       rating,
     };
-    fetch(`https://cinemix-pi.vercel.app/cine/${_id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updatedData),
-    })
-      .then((res) => res.json())
+    // using axios method
+    axios
+      .put(`https://cinemix-pi.vercel.app/cine/${_id}`, updatedData)
       .then((data) => {
-        console.log(data);
-        if (data.modifiedCount > 0) {
+        if (data.data.modifiedCount > 0) {
           toast(`${name} Updated`, {
             icon: "👏",
           });
           navigateTo(-1);
         }
       });
+    // using fetch method
+    // fetch(`https://cinemix-pi.vercel.app/cine/${_id}`, {
+    //   method: "PUT",
+    //   headers: {
+    //     "content-type": "application/json",
+    //   },
+    //   body: JSON.stringify(updatedData),
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     if (data.modifiedCount > 0) {
+    //       toast(`${name} Updated`, {
+    //         icon: "👏",
+    //       });
+    //       navigateTo(-1);
+    //     }
+    //   });
   };
 
   return (
@@ -100,11 +113,9 @@ const CineUpdate = () => {
           defaultValue={media_type}
         >
           <option value="Movie">Movie</option>
-          <option value="Series">Series</option>
+          <option value="Series">TV Series</option>
           <option value="Animation">Animation</option>
-          <option value="Telefilm">Telefilm</option>
-          <option value="Show">TV Series</option>
-          <option value="Cartoon">Cartoon</option>
+          <option value="Anime">Anime</option>
         </select>
       </div>
       <div className="form-control">
