@@ -2,6 +2,7 @@
 
 ### https://cinemix-2ceee.web.app
 ### https://cinemamix.netlify.app
+### https://detailed-knife.surge.sh
 
 ## Key features in this Project
 
