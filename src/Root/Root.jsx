@@ -10,6 +10,7 @@ import CineDetails from "../Component/CineDetails/CineDetails";
 import CineUpdate from "../Component/CineUpdate/CineUpdate";
 import DetailsPage from "../Component/DetailsPage/DetailsPage";
 import ErrorPage from "../Component/ErrorPage/ErrorPage";
+import MyProfile from "../Component/MyProfile/MyProfile";
 
 const Root = createBrowserRouter([
   {
@@ -70,6 +71,14 @@ const Root = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`https://cinemix-pi.vercel.app/cine/${params.id}`),
+      },
+      {
+        path: "/my-profile",
+        element: (
+          <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>
+        )
       },
     ],
   },
