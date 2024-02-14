@@ -106,7 +106,7 @@ const Login = () => {
             </label>
           </div>
           <div className="form-control mt-3">
-            <button className="btn bg-[#3ad47d] hover:bg-[#3ad47d] text-white font-semibold">
+            <button className="btn bg-purple-500 hover:bg-purple-500 text-white font-semibold">
               Login
             </button>
           </div>
@@ -117,7 +117,7 @@ const Login = () => {
             <Link
               to={"/register"}
               state={location.pathname}
-              className="text-green-500"
+              className="text-purple-500"
             >
               Register
             </Link>
@@ -126,7 +126,7 @@ const Login = () => {
         <div className="mx-auto space-x-1">
           <button
             onClick={handleGooglePopupLogin}
-            className="mb-5 text-2xl px-5 py-2 rounded-lg bg-red-100"
+            className="mb-5 text-2xl px-5 py-2 rounded-lg bg-purple-200"
           >
             <FcGoogle />
           </button>

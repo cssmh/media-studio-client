@@ -133,7 +133,7 @@ const Navbar = () => {
           </div>
         ) : (
           <Link to="/login">
-            <button className="btn btn-sm border-green-500 btn-outline">
+            <button className="btn btn-sm border-purple-500 btn-outline">
               Login
             </button>
           </Link>

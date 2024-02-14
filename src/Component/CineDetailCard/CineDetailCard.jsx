@@ -6,6 +6,9 @@ const CineDetailCard = ({ getCard }) => {
     getCard;
 
   const navigateTo = useNavigate();
+  const handleBack = () => {
+    navigateTo(-1);
+  };
 
   return (
     <div className="card bg-base-100 shadow-xl">
@@ -27,20 +30,21 @@ const CineDetailCard = ({ getCard }) => {
         <p>{description}</p>
         <div className="card-actions justify-center">
           <Link to={`/details/${_id}`}>
-            <button className="btn bg-green-500 hover:bg-green-500 text-white">
+            <button className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
               Details
             </button>
           </Link>
           <Link to={`/update/${_id}`}>
-            <button className="btn bg-green-500 hover:bg-green-500 text-white">
+            <button className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
               Update
             </button>
           </Link>
-          <Link to={navigateTo(-1)}>
-            <button className="btn bg-green-500 hover:bg-green-500 text-white">
-              Go Back
-            </button>
-          </Link>
+          <button
+            onClick={handleBack}
+            className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+          >
+            Go Back
+          </button>
         </div>
       </div>
     </div>

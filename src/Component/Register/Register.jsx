@@ -118,7 +118,7 @@ const Register = () => {
             </label>
           </div>
           <div className="form-control mt-3">
-            <button className="btn bg-[#3ad47d] hover:bg-[#3ad47d] text-white font-semibold">
+            <button className="btn bg-purple-500 hover:bg-purple-500 text-white font-semibold">
               Register
             </button>
           </div>
@@ -129,7 +129,7 @@ const Register = () => {
             <Link
               to={"/login"}
               state={location.pathname}
-              className="text-green-500"
+              className="text-purple-500"
             >
               Login
             </Link>

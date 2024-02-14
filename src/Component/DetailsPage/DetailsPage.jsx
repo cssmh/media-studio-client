@@ -41,20 +41,26 @@ const DetailsPage = () => {
   return (
     <div className="font-semibold space-y-1 flex justify-center gap-5 items-center mt-10 mx-2 md:mx-0">
       <img src={image} className="w-64" alt={`${name} photo not found`} />
-      <div className="space-y-1">
+      <div className="space-y-2">
         <h1 className="text-3xl">{name}</h1>
-        <p>{price} BDT</p>
+        <p>
+          <span className="text-green-500">{media}</span>{" "}
+          <span className="text-red-500">{media_type}</span>{" "}
+        </p>
+        <p>
+          Price: <span className="text-blue-500">{price}</span> BDT
+        </p>
         <p className="md:w-96">{description}</p>
         <button
           onClick={handleAddCart}
-          className="btn mt-1 bg-green-500 text-white"
+          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
           Add to Cart
         </button>
         <br></br>
         <button
           onClick={BackButton}
-          className="btn mt-1 bg-green-500 text-white"
+          className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
           Go Back
         </button>
