@@ -1,4 +1,4 @@
-import momin from "../../assets/momen.jpeg";
+import momin from "../../assets/momin.jpeg";
 const MovieReview = () => {
   return (
     <div>

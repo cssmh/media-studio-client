@@ -1,9 +1,12 @@
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const CineDetailCard = ({ getCard }) => {
   //   console.log(getCard);
   const { _id, name, image, media, media_type, price, description, rating } =
     getCard;
+
+  const navigateTo = useNavigate();
+
   return (
     <div className="card bg-base-100 shadow-xl">
       <figure data-aos="zoom-in">
@@ -31,6 +34,11 @@ const CineDetailCard = ({ getCard }) => {
           <Link to={`/update/${_id}`}>
             <button className="btn bg-green-500 hover:bg-green-500 text-white">
               Update
+            </button>
+          </Link>
+          <Link to={navigateTo(-1)}>
+            <button className="btn bg-green-500 hover:bg-green-500 text-white">
+              Go Back
             </button>
           </Link>
         </div>
