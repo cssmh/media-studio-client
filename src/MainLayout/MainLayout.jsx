@@ -7,15 +7,17 @@ import { useEffect } from "react";
 
 const MainLayout = () => {
   const navigationForSpinner = useNavigation();
-  const loc = useLocation()
+  const loc = useLocation();
   // console.log(loc);
-  useEffect(()=> {
-    if(loc.pathname === "/"){
-      document.title = "CineMix -Home"
-    }else{
-      document.title = `CineMIX ${loc.pathname.toUpperCase().replace("/", "-")}`
+  useEffect(() => {
+    if (loc.pathname === "/") {
+      document.title = "CineMix -Home";
+    } else {
+      document.title = `CineMIX ${loc.pathname
+        .toUpperCase()
+        .replace("/", "-")}`;
     }
-  },[loc.pathname])
+  }, [loc.pathname]);
   return (
     <div>
       <div className="max-w-[1310px] mx-auto">

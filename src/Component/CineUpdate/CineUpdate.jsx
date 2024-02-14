@@ -37,7 +37,9 @@ const CineUpdate = () => {
       .then((data) => {
         console.log(data);
         if (data.modifiedCount > 0) {
-          toast.success(`${name} update successfully`);
+          toast(`${name} Updated`, {
+            icon: "👏",
+          });
           navigateTo(-1);
         }
       });

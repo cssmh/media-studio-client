@@ -22,24 +22,24 @@ const Login = () => {
     // console.log(email, password);
     loginUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         // No way login if not verified
         if (!res.user.emailVerified) {
           logOut().then().catch();
           toast.error("Verify your Email first please!");
           return;
+          // No way login if not verified end
+        } else {
+          toast.success("User Login success");
+          navigateTo(loc?.state ? loc?.state : "/");
         }
-        // No way login if not verified end
-        toast.success("User Login success");
-        navigateTo(loc?.state ? loc?.state : "/");
       })
       .catch((err) => toast.error(err.message));
   };
 
   const handleGooglePopupLogin = () => {
     googlePopupLogin()
-      .then((res) => {
-        console.log(res.user);
+      .then(() => {
         toast.success("User Google Login success");
         navigateTo(loc?.state ? loc?.state : "/");
       })

@@ -30,15 +30,14 @@ const Register = () => {
     }
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        // console.log(res.user);
         toast.success("User register success");
         updateUser(name, photo)
-          .then(() => {
-            emailVerification()
-              .then(toast.success("Check your email to verify your account!"))
-              .catch((err) => toast.error(err.message));
-          })
+          .then()
           .catch((err) => toast.error(err.message));
+        emailVerification().then(() =>
+          toast.success("Check your email to verify your account!")
+        );
         if (!res.user.emailVerified) {
           logOut().then().catch();
           navigateTo("/login");
