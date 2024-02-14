@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const MainLayout = () => {
   const navigationForSpinner = useNavigation();
   const loc = useLocation()
-  console.log(loc);
+  // console.log(loc);
   useEffect(()=> {
     if(loc.pathname === "/"){
       document.title = "CineMix -Home"

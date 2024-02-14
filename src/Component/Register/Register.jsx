@@ -39,7 +39,7 @@ const Register = () => {
               .catch((err) => toast.error(err.message));
           })
           .catch((err) => toast.error(err.message));
-        if (!res.emailVerified) {
+        if (!res.user.emailVerified) {
           logOut().then().catch();
           navigateTo("/login");
         } else {
