@@ -26,7 +26,7 @@ const DetailsPage = () => {
           swal("Good job!", `${name} added to cart`, "success");
         }
       });
-      // using fetch method
+    // using fetch method
     // fetch("https://cinemix-pi.vercel.app/cart", {
     //   method: "POST",
     //   headers: {
@@ -49,9 +49,9 @@ const DetailsPage = () => {
   };
 
   return (
-    <div className="font-semibold space-y-1 flex justify-center gap-5 items-center mt-10 mx-2 md:mx-0">
+    <div className="font-semibold space-y-1 flex flex-col md:flex-row justify-center gap-5 items-center mt-10 mx-2 md:mx-0">
       <img src={image} className="w-64" alt={`${name} photo not found`} />
-      <div className="space-y-2">
+      <div className="space-y-2 px-12 md:px-0">
         <h1 className="text-3xl">{name}</h1>
         <p>
           <span className="text-green-500">{media}</span>{" "}
