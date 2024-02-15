@@ -16,3 +16,6 @@ private route.
 5. added firebase auth, reg, login also google popup login.
 6. User can delete their cart, it will also delete from database.
 7. All added data from add product page will be added mongoDB database.
+8. New register user can't login without email verification.
+9. my-profile section added to button name.
+10. User can reset their password using forgot password.
