@@ -19,7 +19,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUser = (name, photo) => {
-        setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
@@ -36,7 +35,6 @@ const AuthProvider = ({ children }) => {
     }
 
     const emailVerification = () => {
-        setLoading(true)
         return sendEmailVerification(auth.currentUser)
     }
 
