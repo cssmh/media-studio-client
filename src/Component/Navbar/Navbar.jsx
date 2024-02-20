@@ -22,7 +22,7 @@ const Navbar = () => {
     </>
   );
 
-  // use theme from local storage if available or set dark theme
+  // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
   );
@@ -43,6 +43,7 @@ const Navbar = () => {
     // add custom data-theme attribute to html tag required to update theme using DaisyUI
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
+  // use theme from local storage if available or set light theme end
 
   return (
     <div className="navbar bg-base-300 mt-6 mb-3 px-4">
