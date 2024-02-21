@@ -42,7 +42,7 @@ const Register = () => {
           logOut().then().catch();
           navigateTo("/login");
         } else {
-          navigateTo("/");
+          navigateTo(location?.state ? location.state : "/");
         }
       })
       .catch((err) => toast.error(err.message));

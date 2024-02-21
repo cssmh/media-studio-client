@@ -22,7 +22,6 @@ const Login = () => {
     // console.log(email, password);
     loginUser(email, password)
       .then((res) => {
-        // console.log(res.user);
         // No way login if not verified
         if (!res.user.emailVerified) {
           logOut().then().catch();
@@ -99,6 +98,7 @@ const Login = () => {
             <label className="label">
               <a
                 onClick={handleForgotPassword}
+                type="button"
                 className="label-text-alt link link-hover font-semibold"
               >
                 Forgot password?
@@ -113,10 +113,10 @@ const Login = () => {
         </form>
         <div className="text-center mb-4 text-sm font-semibold">
           <p>
-            Dont’t Have An Account ?{" "}
+            Do not Have An Account ?{" "}
             <Link
               to={"/register"}
-              state={location.pathname}
+              state={loc.state}
               className="text-purple-500"
             >
               Register
