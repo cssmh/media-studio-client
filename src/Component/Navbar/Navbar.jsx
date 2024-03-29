@@ -36,7 +36,7 @@ const Navbar = () => {
     }
   };
 
-  // set theme state in localstorage on mount & also update localstorage on state change
+  // set theme state in localStorage on mount & also update localStorage on state change
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
