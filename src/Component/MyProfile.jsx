@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { AuthContextCine } from "../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const MyProfile = () => {
-  const { user, updateUser } = useContext(AuthContextCine);
+  const { user, updateUser } = useAuth();
   const { displayName, email, metadata, photoURL } = user;
   const handleUpdate = (e) => {
     e.preventDefault();

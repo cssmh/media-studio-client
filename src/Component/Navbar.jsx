@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "/logo.png";
-import { useContext, useEffect, useState } from "react";
-import { AuthContextCine } from "../AuthProvider/AuthProvider";
+import logo from "../assets/logo.png";
+import { useEffect, useState } from "react";
+import useAuth from "../hooks/useAuth";
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContextCine);
+  const { user, logOut } = useAuth();
   const handleLogout = () => {
     logOut().then().catch();
   };
@@ -35,15 +35,12 @@ const Navbar = () => {
       setTheme("dark");
     }
   };
-
-  // set theme state in localStorage on mount & also update localStorage on state change
+  
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
-    // add custom data-theme attribute to html tag required to update theme using DaisyUI
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
-  // use theme from local storage if available or set light theme end
 
   return (
     <div className="navbar h-[59px] bg-base-300 mt-6 mb-3 px-4 rounded-lg">

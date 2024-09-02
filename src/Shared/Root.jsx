@@ -1,16 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../MainLayout/MainLayout";
-import Home from "../Component/Home/Home";
-import Login from "../Component/Login/Login";
-import Register from "../Component/Register/Register";
-import AddProduct from "../Component/AddProduct/AddProduct";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
-import MyCart from "../Component/MyCart/MyCart";
-import CineDetails from "../Component/CineDetails/CineDetails";
-import CineUpdate from "../Component/CineUpdate/CineUpdate";
-import DetailsPage from "../Component/DetailsPage/DetailsPage";
-import ErrorPage from "../Component/ErrorPage/ErrorPage";
-import MyProfile from "../Component/MyProfile/MyProfile";
+import MainLayout from "./MainLayout";
+import ErrorPage from "../Component/ErrorPage";
+import Home from "../Component/Home";
+import Login from "../Component/Login";
+import Register from "../Component/Register";
+import PrivateRoute from "./PrivateRoute";
+import AddProduct from "../Component/AddProduct";
+import MyCart from "../Component/MyCart";
+import CineDetails from "../Component/CineDetails";
+import CineUpdate from "../Component/CineUpdate";
+import DetailsPage from "../Component/DetailsPage";
+import MyProfile from "../Component/MyProfile";
+
 
 const Root = createBrowserRouter([
   {
@@ -49,7 +50,7 @@ const Root = createBrowserRouter([
       },
       {
         path: "/:id",
-        element: <CineDetails></CineDetails>,
+        element: <CineDetails />,
         loader: () => fetch("http://localhost:5000/cine"),
       },
       {

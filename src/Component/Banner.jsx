@@ -1,9 +1,9 @@
-import banner1 from "./../../../src/assets/1.png";
+import banner from "../assets/banner.png";
 
 const Banner = () => {
   return (
     <div className="carousel w-full rounded-sm">
-      <img src={banner1} className="w-full " />
+      <img src={banner} className="w-full " />
     </div>
   );
 };

@@ -1,15 +1,15 @@
+import toast from "react-hot-toast";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
-import { AuthContextCine } from "../AuthProvider/AuthProvider";
-import toast from "react-hot-toast";
+import { useState } from "react";
+import useAuth from "../hooks/useAuth";
 
 const Register = () => {
   const [view, setView] = useState(true);
   const navigateTo = useNavigate();
   const { createUser, updateUser, emailVerification, logOut } =
-    useContext(AuthContextCine);
+    useAuth();
 
   const handleRegister = (e) => {
     e.preventDefault();

@@ -1,7 +1,5 @@
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 const CineCard = ({ getMedia }) => {
-  // console.log(getMedia);
   const { name, image_url } = getMedia;
   return (
     <Link
@@ -13,10 +11,6 @@ const CineCard = ({ getMedia }) => {
       <h1 className="text-2xl my-1 font-semibold mx-7">{name}</h1>
     </Link>
   );
-};
-
-CineCard.propTypes = {
-  getMedia: PropTypes.object,
 };
 
 export default CineCard;

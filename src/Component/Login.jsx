@@ -2,14 +2,14 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
-import { useContext, useRef, useState } from "react";
-import { AuthContextCine } from "../AuthProvider/AuthProvider";
+import { useRef, useState } from "react";
 import toast from "react-hot-toast";
+import useAuth from "../hooks/useAuth";
 
 const Login = () => {
   const [view, setView] = useState(true);
   const { loginUser, googlePopupLogin, resetPassword } =
-    useContext(AuthContextCine);
+    useAuth()
   const loc = useLocation();
   const navigateTo = useNavigate();
   // console.log(loc);
