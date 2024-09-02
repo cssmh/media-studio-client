@@ -19,28 +19,11 @@ const DetailsPage = () => {
   };
   const handleAddCart = () => {
     // using axios method
-    axios
-      .post("https://cinemix-pi.vercel.app/cart", dataToDatabase)
-      .then((data) => {
-        if (data.data.insertedId) {
-          swal("Good job!", `${name} added to cart`, "success");
-        }
-      });
-    // using fetch method
-    // fetch("https://cinemix-pi.vercel.app/cart", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(dataToDatabase),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     // console.log(data);
-    //     if (data.insertedId) {
-    //       swal("Good job!", `${name} added to cart`, "success");
-    //     }
-    //   });
+    axios.post("http://localhost:5000/cart", dataToDatabase).then((data) => {
+      if (data.data.insertedId) {
+        swal("Good job!", `${name} added to cart`, "success");
+      }
+    });
   };
 
   const navigateTo = useNavigate();

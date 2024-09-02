@@ -23,28 +23,12 @@ const AddProduct = () => {
       rating,
     };
     // using axios method
-    axios.post("https://cinemix-pi.vercel.app/cine", getCine).then((data) => {
+    axios.post("http://localhost:5000/cine", getCine).then((data) => {
       if (data.data.insertedId) {
         form.reset();
         swal("Good job!", `${name} added!`, "success");
       }
     });
-    // using fetch method
-    // fetch("https://cinemix-pi.vercel.app/cine", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(getCine),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.insertedId) {
-    //       form.reset();
-    //       swal("Good job!", `${name} added!`, "success");
-    //     }
-    //   });
   };
 
   return (

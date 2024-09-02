@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const Login = () => {
   const [view, setView] = useState(true);
-  const { loginUser, googlePopupLogin, logOut, resetPassword } =
+  const { loginUser, googlePopupLogin, resetPassword } =
     useContext(AuthContextCine);
   const loc = useLocation();
   const navigateTo = useNavigate();
@@ -21,17 +21,9 @@ const Login = () => {
     const password = form.password.value;
     // console.log(email, password);
     loginUser(email, password)
-      .then((res) => {
-        // No way login if not verified
-        if (!res.user.emailVerified) {
-          logOut().then().catch();
-          toast.error("Verify your Email first please!");
-          return;
-          // No way login if not verified end
-        } else {
-          toast.success("User Login success");
-          navigateTo(loc?.state ? loc?.state : "/");
-        }
+      .then(() => {
+        toast.success("User Login success");
+        navigateTo(loc?.state ? loc?.state : "/");
       })
       .catch((err) => toast.error(err.message));
   };

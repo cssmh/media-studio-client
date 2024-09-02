@@ -16,19 +16,17 @@ const MyCartCard = ({ getCart, cart, setCart }) => {
       if (willDelete) {
         // main code
         // using axios method
-        axios
-          .delete(`https://cinemix-pi.vercel.app/cart/${idx}`)
-          .then((data) => {
-            if (data.data.deletedCount > 0) {
-              const remaining = cart.filter((solo) => solo._id !== idx);
-              setCart(remaining);
-              swal(`${name} deleted from Cart!`, {
-                icon: "success",
-              });
-            }
-          });
+        axios.delete(`http://localhost:5000/cart/${idx}`).then((data) => {
+          if (data.data.deletedCount > 0) {
+            const remaining = cart.filter((solo) => solo._id !== idx);
+            setCart(remaining);
+            swal(`${name} deleted from Cart!`, {
+              icon: "success",
+            });
+          }
+        });
         // using fetch method
-        // fetch(`https://cinemix-pi.vercel.app/cart/${idx}`, {
+        // fetch(`http://localhost:5000/cart/${idx}`, {
         //   method: "DELETE",
         // })
         //   .then((res) => res.json())

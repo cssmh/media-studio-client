@@ -9,7 +9,7 @@ const Navbar = () => {
   };
 
   const allNav = (
-    <>
+    <div className="flex">
       <li>
         <NavLink to={"/"}>Home</NavLink>
       </li>
@@ -19,7 +19,7 @@ const Navbar = () => {
       <li>
         <NavLink to={"/my-cart"}>My Cart</NavLink>
       </li>
-    </>
+    </div>
   );
 
   // use theme from local storage if available or set light theme
@@ -46,7 +46,7 @@ const Navbar = () => {
   // use theme from local storage if available or set light theme end
 
   return (
-    <div className="navbar bg-base-300 mt-6 mb-3 px-4">
+    <div className="navbar h-[59px] bg-base-300 mt-6 mb-3 px-4 rounded-lg">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -81,7 +81,6 @@ const Navbar = () => {
       <div className="navbar-end">
         {/* theme */}
         <label className="swap swap-rotate mr-2">
-          {/* this hidden checkbox controls the state */}
           <input
             onChange={handleToggle}
             // show toggle image based on local storage theme
@@ -112,7 +111,7 @@ const Navbar = () => {
         {user?.email ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-11 rounded-full">
+              <div className="w-10 rounded-full">
                 <img src={user?.photoURL} alt={user?.displayName} />
               </div>
             </label>

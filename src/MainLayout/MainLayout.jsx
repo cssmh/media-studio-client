@@ -1,44 +1,19 @@
-import { Outlet, useLocation, useNavigation } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Navbar from "../Component/Navbar/Navbar";
-import { Toaster } from "react-hot-toast";
 import Footer from "../Component/Footer/Footer";
-import { FallingLines } from "react-loader-spinner";
-import { useEffect } from "react";
+import SmallLoader from "../Component/SmallLoader";
 
 const MainLayout = () => {
-  const navigationForSpinner = useNavigation();
-  const loc = useLocation();
-  // console.log(loc);
-  useEffect(() => {
-    if (loc.pathname === "/") {
-      document.title = "CineMix -Home";
-    } else {
-      document.title = `CineMIX ${loc.pathname
-        .toUpperCase()
-        .replace("/", "-")}`;
-    }
-  }, [loc.pathname]);
+  const navigation = useNavigation();
   return (
     <div>
       <div className="max-w-[1310px] mx-auto">
-        <Navbar></Navbar>
+        <Navbar />
         <div className="min-h-[80vh]">
-          {navigationForSpinner.state === "loading" ? (
-            <div className="flex justify-center">
-              <FallingLines
-                color="#9C27B0"
-                width="80"
-                visible={true}
-                ariaLabel="falling-circles-loading"
-              />
-            </div>
-          ) : (
-            <Outlet></Outlet>
-          )}
+          {navigation.state === "loading" ? <SmallLoader /> : <Outlet />}
         </div>
-        <Toaster position="top-right" reverseOrder={false} />
       </div>
-      <Footer></Footer>
+      <Footer />
     </div>
   );
 };

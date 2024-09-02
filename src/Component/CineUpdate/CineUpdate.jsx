@@ -28,34 +28,14 @@ const CineUpdate = () => {
       rating,
     };
     // using axios method
-    axios
-      .put(`https://cinemix-pi.vercel.app/cine/${_id}`, updatedData)
-      .then((data) => {
-        if (data.data.modifiedCount > 0) {
-          toast(`${name} Updated`, {
-            icon: "👏",
-          });
-          navigateTo(-1);
-        }
-      });
-    // using fetch method
-    // fetch(`https://cinemix-pi.vercel.app/cine/${_id}`, {
-    //   method: "PUT",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(updatedData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     if (data.modifiedCount > 0) {
-    //       toast(`${name} Updated`, {
-    //         icon: "👏",
-    //       });
-    //       navigateTo(-1);
-    //     }
-    //   });
+    axios.put(`http://localhost:5000/cine/${_id}`, updatedData).then((data) => {
+      if (data.data.modifiedCount > 0) {
+        toast(`${name} Updated`, {
+          icon: "👏",
+        });
+        navigateTo(-1);
+      }
+    });
   };
 
   return (

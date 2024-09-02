@@ -15,20 +15,20 @@ import MyProfile from "../Component/MyProfile/MyProfile";
 const Root = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout></MainLayout>,
-    errorElement: <ErrorPage></ErrorPage>,
+    element: <MainLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: <Home />,
       },
       {
         path: "/login",
-        element: <Login></Login>,
+        element: <Login />,
       },
       {
         path: "/register",
-        element: <Register></Register>,
+        element: <Register />,
       },
       {
         path: "/add-product",
@@ -45,12 +45,12 @@ const Root = createBrowserRouter([
             <MyCart />
           </PrivateRoute>
         ),
-        loader: () => fetch("https://cinemix-pi.vercel.app/cart"),
+        loader: () => fetch("http://localhost:5000/cart"),
       },
       {
         path: "/:id",
         element: <CineDetails></CineDetails>,
-        loader: () => fetch("https://cinemix-pi.vercel.app/cine"),
+        loader: () => fetch("http://localhost:5000/cine"),
       },
       {
         path: "/update/:id",
@@ -60,7 +60,7 @@ const Root = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cinemix-pi.vercel.app/cine/${params.id}`),
+          fetch(`http://localhost:5000/cine/${params.id}`),
       },
       {
         path: "/details/:id",
@@ -70,7 +70,7 @@ const Root = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://cinemix-pi.vercel.app/cine/${params.id}`),
+          fetch(`http://localhost:5000/cine/${params.id}`),
       },
       {
         path: "/my-profile",
@@ -78,7 +78,7 @@ const Root = createBrowserRouter([
           <PrivateRoute>
             <MyProfile />
           </PrivateRoute>
-        )
+        ),
       },
     ],
   },

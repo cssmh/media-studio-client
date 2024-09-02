@@ -6,11 +6,11 @@ import MovieReview from "../MovieReview/MovieReview";
 const Home = () => {
   return (
     <div>
-      <Banner></Banner>
+      <Banner />
       <div className="max-w-5xl mx-auto">
-        <Entertainment></Entertainment>
-        <AboutUs></AboutUs>
-        <MovieReview></MovieReview>
+        <Entertainment />
+        <AboutUs />
+        <MovieReview />
       </div>
     </div>
   );
