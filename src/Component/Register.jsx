@@ -2,7 +2,7 @@ import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { AuthContextCine } from "../../AuthProvider/AuthProvider";
+import { AuthContextCine } from "../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {

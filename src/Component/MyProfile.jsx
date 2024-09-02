@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { AuthContextCine } from "../../AuthProvider/AuthProvider";
+import { AuthContextCine } from "../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 
 const MyProfile = () => {

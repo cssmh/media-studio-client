@@ -3,7 +3,7 @@ import { FaRegEye } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { useContext, useRef, useState } from "react";
-import { AuthContextCine } from "../../AuthProvider/AuthProvider";
+import { AuthContextCine } from "../AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
