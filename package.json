@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.53.3",
     "aos": "^2.3.4",
     "axios": "^1.6.7",
     "dotenv": "^16.4.2",
     "firebase": "^10.8.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.4",
+    "package": "^1.0.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

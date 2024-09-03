@@ -18,43 +18,52 @@
 
 ## Description
 
-Cinemix is a dynamic platform for movie enthusiasts, offering a seamless way to explore, manage, and enjoy a wide variety of movies and entertainment content. The platform provides an interactive and user-friendly experience with several features to enhance the user's engagement.
+Cinemix is a modern cineplex platform designed to offer a seamless ticket-buying experience for movie lovers. Users can explore a wide range of movies, choose showtimes, select seats, and purchase tickets all in one place. The platform is optimized for both desktop and mobile devices, providing a fast, secure, and user-friendly environment to enjoy your favorite movies.
 
 ## Key Features
 
 1. **User Authentication:**
 
    - Sign up with email and Google account.
-   - Email verification is required for new users to log in.
-   - Secure login system with Firebase authentication, including Google popup login.
+   - Email verification required for new users to log in.
+   - Secure login system using Firebase authentication, including Google popup login.
 
-2. **Content Organization:**
+2. **Movie Exploration:**
 
-   - Six types of entertainment and media, each with separate cards on the details page.
+   - Browse movies by genre, popularity, or release date.
+   - Detailed movie pages with trailers, ratings, and descriptions.
+   - Filter and search options to quickly find preferred movies.
+
+3. **Ticket Purchasing:**
+
+   - View available showtimes for each movie.
+   - Select seats and purchase tickets directly from the website.
+   - Payment processing integrated with secure payment gateways.
+   - Digital tickets sent via email after purchase.
+
+4. **User Interface and Experience:**
+
    - Dark/light mode toggle for theme customization, saved to local storage.
-   - Comprehensive details page accessible to all users.
+   - Responsive design for an optimal experience on all devices.
+   - Intuitive navigation and user-friendly checkout process.
 
-3. **Protected Routes:**
+5. **Account Management:**
 
-   - Update card and add product pages are private routes.
-   - My Cart and My Profile sections are protected and only accessible to authenticated users.
+   - Access to user profiles with order history and ticket details.
+   - Update personal information and manage saved payment methods.
+   - Option to reset password using the 'Forgot Password' feature.
 
-4. **User Interface:**
+6. **Data Management:**
 
-   - Responsive design suitable for all devices.
-   - Intuitive navigation and interactive elements for a smooth user experience.
+   - Real-time updates for movie listings and showtimes.
+   - Secure storage of user and transaction data in a MongoDB database.
+   - Ability for users to cancel tickets before the showtime.
 
-5. **Data Management:**
+7. **Admin Capabilities:**
 
-   - Users can delete items from their cart, which will also be removed from the database.
-   - All data added from the product page is stored in a MongoDB database.
-   - User-specific actions like adding or deleting content are secured.
-
-6. **Advanced Functionalities:**
-
-   - Password reset option using the 'Forgot Password' feature.
-   - Local storage usage for theme preferences (dark/light mode).
-   - Real-time database updates upon user actions.
+   - Admin panel for managing movies, showtimes, and user data.
+   - Add, update, or delete movie listings and schedule new showtimes.
+   - View analytics and reports on sales, user activity, and ticket trends.
 
 ## Packages Used
 

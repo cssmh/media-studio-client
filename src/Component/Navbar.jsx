@@ -70,7 +70,7 @@ const Navbar = () => {
           </ul>
         </div>
         <img src={logo} className="w-0 md:w-12" alt="" />
-        <a className="font-semibold text-xl pl-0 md:pl-2">CineMIX</a>
+        <a className="font-semibold text-xl pl-0 md:pl-2">Star CineMIX</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{allNav}</ul>

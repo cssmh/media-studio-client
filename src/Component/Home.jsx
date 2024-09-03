@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>CineMix - Gateway to Movie Magic</title>
+        <title>Star CineMix - Book Your Ticket</title>
       </Helmet>
       <Banner />
       <div className="max-w-5xl mx-auto">

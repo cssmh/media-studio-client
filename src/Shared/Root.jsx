@@ -6,12 +6,11 @@ import Login from "../Component/Login";
 import Register from "../Component/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddProduct from "../Component/AddProduct";
-import MyCart from "../Component/MyCart";
+import MyCart from "../Pages/MyCart";
 import CineDetails from "../Component/CineDetails";
 import CineUpdate from "../Component/CineUpdate";
 import DetailsPage from "../Component/DetailsPage";
 import MyProfile from "../Component/MyProfile";
-
 
 const Root = createBrowserRouter([
   {
@@ -46,7 +45,6 @@ const Root = createBrowserRouter([
             <MyCart />
           </PrivateRoute>
         ),
-        loader: () => fetch("http://localhost:5000/cart"),
       },
       {
         path: "/:id",

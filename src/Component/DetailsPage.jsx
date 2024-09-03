@@ -1,21 +1,24 @@
 import axios from "axios";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import useAuth from "../hooks/useAuth";
 
 const DetailsPage = () => {
+  const { user } = useAuth();
   const loadDetailsData = useLoaderData();
   //   console.log(loadDetailsData);
-  const { name, image, media, media_type, price, description, rating } =
+  const { _id, name, image, media, media_type, price, description, rating } =
     loadDetailsData;
   // if i sent loadDetailsData to database, it will send its id also that will be same $ i won't be able add duplicate. Thats why i send dataToDatabase which don't have id. database gonna gave it unique id.
   const dataToDatabase = {
+    movie_id: _id,
     name: name,
     image: image,
     media: media,
     media_type: media_type,
     price: price,
-    description: description,
     rating: rating,
+    user_email: user?.email,
   };
   const handleAddCart = () => {
     // using axios method
