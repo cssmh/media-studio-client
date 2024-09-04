@@ -41,8 +41,9 @@ const movieType = [
 
 const Entertainment = () => {
   return (
-    <div className="my-7">
-      <h1 className="text-3xl font-semibold text-center mb-9 text-gray-900 dark:text-white">
+    <div>
+      <h2 className="text-3xl font-bold text-center">Our Categories</h2>
+      <h1 className="text-3xl font-semibold text-center text-gray-900 dark:text-white">
         Entertainment and Media
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -8,7 +8,7 @@
 
 - [Cinemix on Firebase](https://cinemix-2ceee.web.app)
 - [Cinemix on Netlify](https://cinemamix.netlify.app)
-- [Cinemix on Surge](https://detailed-knife.surge.sh)
+- [Cinemix on Surge](https://cinemix.surge.sh)
 
 ## Table of Contents
 
@@ -59,11 +59,6 @@ Cinemix is a modern cineplex platform designed to offer a seamless ticket-buying
    - Secure storage of user and transaction data in a MongoDB database.
    - Ability for users to cancel tickets before the showtime.
 
-7. **Admin Capabilities:**
-
-   - Admin panel for managing movies, showtimes, and user data.
-   - Add, update, or delete movie listings and schedule new showtimes.
-   - View analytics and reports on sales, user activity, and ticket trends.
 
 ## Packages Used
 

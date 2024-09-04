@@ -2,55 +2,31 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import Image1 from "../assets/film1.jpg";
-import Image2 from "../assets/film2.jpg";
-import Image3 from "../assets/film3.jpg";
-import Image4 from "../assets/film4.jpg";
-import Image5 from "../assets/film5.png";
-import Image6 from "../assets/film6.jpg";
+import Image2 from "../assets/film1.jpg";
+import Image3 from "../assets/film2.jpg";
+import Image5 from "../assets/film3.jpg";
 
 const HeroData = [
-  {
-    id: 1,
-    img: Image1,
-    subtitle: "Exclusive",
-    title: "Wireless",
-    title2: "Keyboard",
-  },
   {
     id: 2,
     img: Image2,
     subtitle: "Exclusive",
-    title: "Mechanical",
-    title2: "Keyboard",
+    title: "Marvel",
+    title2: "Netflix",
   },
   {
     id: 3,
     img: Image3,
     subtitle: "Exclusive",
-    title: "Branded",
-    title2: "Combo",
-  },
-  {
-    id: 4,
-    img: Image4,
-    subtitle: "Exclusive",
-    title: "Branded",
-    title2: "Combo",
+    title: "Horror",
+    title2: "Sony",
   },
   {
     id: 5,
     img: Image5,
     subtitle: "Exclusive",
-    title: "Branded",
-    title2: "Combo",
-  },
-  {
-    id: 6,
-    img: Image6,
-    subtitle: "Exclusive",
-    title: "Branded",
-    title2: "Combo",
+    title: "Hollywood",
+    title2: "Warner",
   },
 ];
 
@@ -67,18 +43,16 @@ const Banner = () => {
     pauseOnHover: false,
     pauseOnFocus: true,
   };
+
   return (
-    <div
-      className="overflow-hidden rounded-3xl min-h-[550px] sm:min-h-[650px]  bg-slate-500 flex justify-center items-center
-        "
-    >
+    <div className="overflow-hidden rounded-3xl min-h-[250px] sm:min-h-[450px] bg-slate-500 flex justify-center items-center">
       <div className="container pb-8 sm:pb-0">
         <Slider {...settings}>
           {HeroData.map((data) => (
-            <div key={data.id}>
+            <div key={data.id} className="relative">
               <div className="grid grid-cols-1 sm:grid-cols-2">
                 {/* text content section */}
-                <div className="flex flex-col justify-center gap-4 sm:pl-3 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10 ">
+                <div className="flex flex-col justify-center gap-4 sm:pl-3 pt-12 sm:pt-0 text-center sm:text-left order-2 sm:order-1 relative z-10">
                   <h1
                     data-aos="zoom-out"
                     data-aos-duration="500"
@@ -111,7 +85,7 @@ const Banner = () => {
                   ></div>
                 </div>
                 {/* Img section */}
-                <div className="order-1 sm:order-2">
+                <div className="order-1 sm:order-2 flex justify-center items-center">
                   <div
                     data-aos="zoom-in"
                     data-aos-once="true"
@@ -120,7 +94,8 @@ const Banner = () => {
                     <img
                       src={data.img}
                       alt=""
-                      className="w-[300px] sm:w-[450px] h-[300px] sm:h-[450px] sm:scale-105 lg:scale-120 object-contain mx-auto drop-shadow-[-8px_4px_6px_rgba(0,0,0,.4)] relative z-40"
+                      className="w-full h-full object-cover mx-auto drop-shadow-[-8px_4px_6px_rgba(0,0,0,.4)]"
+                      style={{ maxWidth: "600px", maxHeight: "400px" }}
                     />
                   </div>
                 </div>
