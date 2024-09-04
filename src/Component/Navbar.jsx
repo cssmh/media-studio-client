@@ -8,20 +8,6 @@ const Navbar = () => {
     logOut().then().catch();
   };
 
-  const allNav = (
-    <div className="flex">
-      <li>
-        <NavLink to={"/"}>Home</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/add-product"}>Add Product</NavLink>
-      </li>
-      <li>
-        <NavLink to={"/my-cart"}>My Cart</NavLink>
-      </li>
-    </div>
-  );
-
   // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -66,14 +52,34 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
-            {allNav}
+            <li>
+              <NavLink to={"/"}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/add-product"}>Add Movie</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/my-cart"}>My Cart</NavLink>
+            </li>
           </ul>
         </div>
         <img src={logo} className="w-0 md:w-12" alt="" />
         <a className="font-semibold text-xl pl-0 md:pl-2">Star CineMIX</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{allNav}</ul>
+        <ul className="menu menu-horizontal px-1">
+          <div className="flex">
+            <li>
+              <NavLink to={"/"}>Home</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/add-product"}>Add Movie</NavLink>
+            </li>
+            <li>
+              <NavLink to={"/my-cart"}>My Cart</NavLink>
+            </li>
+          </div>
+        </ul>
       </div>
       <div className="navbar-end">
         {/* theme */}
