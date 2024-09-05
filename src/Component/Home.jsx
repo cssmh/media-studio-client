@@ -14,8 +14,8 @@ const Home = () => {
         <title>Star CineMix - Book Your Ticket</title>
       </Helmet>
       <Banner />
-      <Services />
       <LatestMovies />
+      <Services />
       <div className="max-w-6xl mx-auto">
         <AllCategory />
       </div>

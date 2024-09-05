@@ -1,10 +1,5 @@
 import axiosSecure from ".";
 
-export const getAllCategory = async () => {
-  const { data } = await axiosSecure("/categories");
-  return data;
-};
-
 export const getLatestMovies = async () => {
   const { data } = await axiosSecure("/latest-movies");
   return data;
@@ -37,5 +32,15 @@ export const deleteMyCart = async (id) => {
 
 export const addCart = async (cartData) => {
   const { data } = await axiosSecure.post("/add-cart", cartData);
+  return data;
+};
+
+export const addCine = async (cineData) => {
+  const { data } = await axiosSecure.post("/cine", cineData);
+  return data;
+};
+
+export const updateCine = async (id, updatedData) => {
+  const { data } = await axiosSecure.put(`cine/${id}`, updatedData);
   return data;
 };

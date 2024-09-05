@@ -1,8 +1,8 @@
-import axios from "axios";
 import swal from "sweetalert";
+import { addCine } from "../Api/movie";
 
 const AddProduct = () => {
-  const handleAddCine = (e) => {
+  const handleAddCine = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -12,7 +12,6 @@ const AddProduct = () => {
     const price = form.price.value;
     const description = form.description.value;
     const rating = form.rating.value;
-    // console.log(name, image, media, media_type, price, description, rating);
     const getCine = {
       name,
       image,
@@ -22,13 +21,15 @@ const AddProduct = () => {
       description,
       rating,
     };
-    // using axios method
-    axios.post("http://localhost:5000/cine", getCine).then((data) => {
-      if (data.data.insertedId) {
+    try {
+      const res = await addCine(getCine);
+      if (res.insertedId) {
         form.reset();
         swal("Good job!", `${name} added!`, "success");
       }
-    });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

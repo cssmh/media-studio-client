@@ -1,39 +1,64 @@
-import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { getAllCategory } from "../Api/movie";
+
+const categories = [
+  "Disney",
+  "Netflix",
+  "Sony Pictures",
+  "Spotify",
+  "Time Warner",
+  "Warner Bros",
+];
+
+const getCategoryColor = (name) => {
+  switch (name) {
+    case "Disney":
+      return "bg-gradient-to-r from-blue-400 to-blue-600";
+    case "Netflix":
+      return "bg-gradient-to-r from-red-600 to-red-800";
+    case "Sony Pictures":
+      return "bg-gradient-to-r from-purple-500 to-purple-700";
+    case "Spotify":
+      return "bg-gradient-to-r from-green-400 to-green-600";
+    case "Time Warner":
+      return "bg-gradient-to-r from-orange-500 to-orange-700";
+    case "Warner Bros":
+      return "bg-gradient-to-r from-yellow-500 to-yellow-700";
+    default:
+      return "bg-gradient-to-r from-gray-400 to-gray-600";
+  }
+};
 
 const AllCategory = () => {
-  const { data = [] } = useQuery({
-    queryKey: ["category"],
-    queryFn: () => getAllCategory(),
-  });
-
   return (
-    <div>
-      <h2 className="text-2xl font-bold text-center mb-8">Select Category</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {data.map((category) => (
-          <div key={category._id}>
+    <div className="py-8 px-4">
+      <h2 className="text-3xl font-bold text-center mb-8 text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        Select Category
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {categories.map((category, index) => (
+          <div
+            key={category}
+            className="relative group overflow-hidden rounded-lg bg-white shadow-lg"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+            data-aos-delay={index * 100}
+          >
             <Link
-              to={`category/${category.name.toLowerCase()}`}
-              data-aos="zoom-in-up"
-              className="relative p-4 flex flex-col bg-base-300 rounded-lg overflow-hidden group"
+              to={`category/${category.toLowerCase().replace(/ /g, "-")}`}
+              className={`flex flex-col items-center justify-center h-full p-8 text-center ${getCategoryColor(
+                category
+              )} hover:scale-105 transition-all duration-300 rounded-lg`}
+              data-aos="zoom-in"
+              data-aos-duration="800"
             >
-              <img
-                src={category.image_url}
-                className="h-44 mx-auto rounded-lg transition-transform transform group-hover:scale-105"
-                alt={category.name}
-              />
-              <h1 className="text-2xl my-2 font-semibold mx-4 mt-4">
-                {category.name}
-              </h1>
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <h1 className="text-5xl font-bold text-white mb-4">{category}</h1>
+              <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <div className="text-center p-4">
-                  <h2 className="text-xl font-bold mb-2">
-                    Explore {category.name}
+                  <h2 className="text-xl font-bold text-white mb-2">
+                    Explore {category}
                   </h2>
-                  <p className="text-sm">
-                    Discover more about {category.name}. Click to see the latest
+                  <p className="text-sm text-gray-200">
+                    Discover more about {category}. Click to see the latest
                     movies and updates from this category!
                   </p>
                 </div>

@@ -1,6 +1,6 @@
-import axios from "axios";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import { updateCine } from "../Api/movie";
 
 const CineUpdate = () => {
   const loadAllData = useLoaderData();
@@ -8,7 +8,7 @@ const CineUpdate = () => {
     loadAllData;
   const navigateTo = useNavigate();
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -27,15 +27,13 @@ const CineUpdate = () => {
       description,
       rating,
     };
-    // using axios method
-    axios.put(`http://localhost:5000/cine/${_id}`, updatedData).then((data) => {
-      if (data.data.modifiedCount > 0) {
-        toast(`${name} Updated`, {
-          icon: "👏",
-        });
-        navigateTo(-1);
-      }
-    });
+    const res = await updateCine(_id, updatedData);
+    if (res.modifiedCount > 0) {
+      toast(`${name} Updated`, {
+        icon: "👏",
+      });
+      navigateTo(-1);
+    }
   };
 
   return (

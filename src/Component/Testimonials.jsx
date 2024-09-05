@@ -47,10 +47,10 @@ const Testimonials = () => {
           What Our Users Say
         </h2>
         <Swiper
-          speed={200}
+          speed={300}
           grabCursor={true}
           autoplay={{
-            delay: 3000, // Adjust delay as needed
+            delay: 1000, // Adjust delay as needed
             disableOnInteraction: false,
           }}
           modules={[Pagination, Autoplay]}
