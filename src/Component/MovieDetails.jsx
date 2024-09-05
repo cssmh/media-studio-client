@@ -1,15 +1,14 @@
-import axios from "axios";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import useAuth from "../hooks/useAuth";
+import { addCart } from "../Api/movie";
 
-const DetailsPage = () => {
+const MovieDetails = () => {
   const { user } = useAuth();
   const loadDetailsData = useLoaderData();
-  //   console.log(loadDetailsData);
   const { _id, name, image, media, media_type, price, description, rating } =
     loadDetailsData;
-  // if i sent loadDetailsData to database, it will send its id also that will be same $ i won't be able add duplicate. Thats why i send dataToDatabase which don't have id. database gonna gave it unique id.
+
   const dataToDatabase = {
     movie_id: _id,
     name: name,
@@ -20,13 +19,17 @@ const DetailsPage = () => {
     rating: rating,
     user_email: user?.email,
   };
-  const handleAddCart = () => {
-    // using axios method
-    axios.post("http://localhost:5000/cart", dataToDatabase).then((data) => {
-      if (data.data.insertedId) {
+
+  const handleAddCart = async () => {
+    try {
+      const response = await addCart(dataToDatabase);
+      if (response?.insertedId) {
         swal("Good job!", `${name} added to cart`, "success");
       }
-    });
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      swal("Oops!", "Something went wrong. Please try again.", "error");
+    }
   };
 
   const navigateTo = useNavigate();
@@ -41,7 +44,7 @@ const DetailsPage = () => {
         <h1 className="text-3xl">{name}</h1>
         <p>
           <span className="text-green-500">{media}</span>{" "}
-          <span className="text-red-500">{media_type}</span>{" "}
+          <span className="text-red-500">{media_type}</span>
         </p>
         <p>
           Price: <span className="text-blue-500">{price}</span> BDT
@@ -53,7 +56,7 @@ const DetailsPage = () => {
         >
           Add to Cart
         </button>
-        <br></br>
+        <br />
         <button
           onClick={BackButton}
           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
@@ -65,4 +68,4 @@ const DetailsPage = () => {
   );
 };
 
-export default DetailsPage;
+export default MovieDetails;

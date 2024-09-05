@@ -2,56 +2,15 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
-
-const movies = [
-  {
-    name: "Captain America Civil War (2016)",
-    image:
-      "https://new.circleftp.net:5000/uploads/622819ac-26fc-4e6d-b80a-6e6b216b511a.jpeg",
-  },
-  {
-    name: "Saripodhaa Sanivaaram",
-    image:
-      "https://new.circleftp.net:5000/uploads/bbe2385d-db3b-4b04-86ce-8eefdbb3fc28.jpeg",
-  },
-  {
-    name: "Avengers Endgame (2019)",
-    image:
-      "https://new.circleftp.net:5000/uploads/12ae6fa7-f4e0-40ba-8a1b-8fb4813c48b3.jpeg",
-  },
-  {
-    name: "Raayan (2024)",
-    image:
-      "https://new.circleftp.net:5000/uploads/aec744d9-9c66-4cf1-a79b-3cf12b4b6684.jpeg",
-  },
-  {
-    name: "Satyabhama (2024)",
-    image:
-      "https://new.circleftp.net:5000/uploads/c6d48fae-e134-40fe-a0ba-6ada24c2fb11.jpeg",
-  },
-  {
-    name: "Avengers Infinity War (2018)",
-    image:
-      "https://new.circleftp.net:5000/uploads/1d7f4e65-502c-416b-a177-dc7da334ee4a.jpeg",
-  },
-  {
-    name: "Captain America: The Winter Soldier (2014)",
-    image:
-      "https://new.circleftp.net:5000/uploads/b360f694-7b12-4e1c-bec1-316b078277fc.jpeg",
-  },
-  {
-    name: "Bad Newz (2024)",
-    image:
-      "https://new.circleftp.net:5000/uploads/9d960b56-01e0-4fcf-875a-f5dc79310fc2.jpeg",
-  },
-  {
-    name: "Ranarangam (2019)",
-    image:
-      "https://new.circleftp.net:5000/uploads/156cc530-8800-4afc-a294-6903e70f4c4d.jpeg",
-  },
-];
+import { useQuery } from "@tanstack/react-query";
+import { getLatestMovies } from "../Api/movie";
 
 const LatestMovies = () => {
+  const { data = [] } = useQuery({
+    queryKey: ["latestMovies"],
+    queryFn: () => getLatestMovies(),
+  });
+
   return (
     <div className="max-w-7xl mx-2 md:mx-auto py-9">
       <h2 className="text-3xl font-bold text-center mb-8">Latest Movies</h2>
@@ -85,7 +44,7 @@ const LatestMovies = () => {
           },
         }}
       >
-        {movies.map((movie, idx) => (
+        {data?.map((movie, idx) => (
           <SwiperSlide key={idx}>
             <div className="relative overflow-hidden rounded-lg bg-gray-800 text-white shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
               <img

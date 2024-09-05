@@ -7,10 +7,11 @@ import Register from "../Component/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddProduct from "../Component/AddProduct";
 import MyCart from "../Pages/MyCart";
-import CineDetails from "../Component/CineDetails";
+import TypeMovies from "../Component/TypeMovies";
 import CineUpdate from "../Component/CineUpdate";
-import DetailsPage from "../Component/DetailsPage";
+import MovieDetails from "../Component/MovieDetails";
 import MyProfile from "../Component/MyProfile";
+import { getMovieDetails, getTypeMovies } from "../Api/movie";
 
 const Root = createBrowserRouter([
   {
@@ -47,9 +48,9 @@ const Root = createBrowserRouter([
         ),
       },
       {
-        path: "/:id",
-        element: <CineDetails />,
-        loader: () => fetch("http://localhost:5000/cine"),
+        path: "/category/:type",
+        element: <TypeMovies />,
+        loader: ({ params }) => getTypeMovies(params.type),
       },
       {
         path: "/update/:id",
@@ -58,18 +59,16 @@ const Root = createBrowserRouter([
             <CineUpdate />
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/cine/${params.id}`),
+        loader: ({ params }) => getMovieDetails(params.id),
       },
       {
         path: "/details/:id",
         element: (
           <PrivateRoute>
-            <DetailsPage />
+            <MovieDetails />
           </PrivateRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/cine/${params.id}`),
+        loader: ({ params }) => getMovieDetails(params.id),
       },
       {
         path: "/my-profile",

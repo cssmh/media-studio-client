@@ -1,8 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
-import Entertainment from "./Entertainment";
+import AllCategory from "./AllCategory";
 import Services from "./Services";
 import LatestMovies from "../Pages/LatestMovies";
+import FeaturedMovies from "./FeaturedMovies";
+import Testimonials from "./Testimonials";
+import Newsletter from "./Newsletter";
 
 const Home = () => {
   return (
@@ -14,8 +17,11 @@ const Home = () => {
       <Services />
       <LatestMovies />
       <div className="max-w-6xl mx-auto">
-        <Entertainment />
+        <AllCategory />
       </div>
+      <FeaturedMovies />
+      <Testimonials />
+      <Newsletter />
     </div>
   );
 };

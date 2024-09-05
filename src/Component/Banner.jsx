@@ -12,14 +12,14 @@ const HeroData = [
     img: Image2,
     subtitle: "Exclusive",
     title: "Marvel",
-    title2: "Netflix",
+    title2: "Sony",
   },
   {
     id: 3,
     img: Image3,
     subtitle: "Exclusive",
     title: "Horror",
-    title2: "Sony",
+    title2: "Netflix",
   },
   {
     id: 5,
@@ -83,6 +83,13 @@ const Banner = () => {
                     data-aos-duration="500"
                     data-aos-delay="300"
                   ></div>
+                  <button
+                    className="mt-6 px-6 py-3 bg-yellow-400 text-black font-semibold rounded-lg hover:bg-yellow-500 transition duration-300"
+                    data-aos="fade-up"
+                    data-aos-delay="600"
+                  >
+                    Buy Tickets Now
+                  </button>
                 </div>
                 {/* Img section */}
                 <div className="order-1 sm:order-2 flex justify-center items-center">
