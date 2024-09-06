@@ -46,14 +46,16 @@ const LatestMovies = () => {
       >
         {data?.map((movie, idx) => (
           <SwiperSlide key={idx}>
-            <div className="relative overflow-hidden rounded-lg bg-gray-800 text-white shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+            <div className="relative overflow-hidden rounded-lg text-white shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
               <img
                 src={movie.image}
                 alt={movie.name}
-                className="w-full object-cover transition-transform duration-300 ease-in-out"
+                className="w-3/4 mx-auto lg:w-full object-cover transition-transform duration-300 ease-in-out"
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out">
-                <span className="text-xl font-semibold">{movie.name}</span>
+                <span className="text-base md:text-xl font-semibold">
+                  {movie.name}
+                </span>
               </div>
             </div>
           </SwiperSlide>

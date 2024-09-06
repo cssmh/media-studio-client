@@ -15,11 +15,11 @@ const FeaturedMovies = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {data?.slice(0, 8).map((movie) => (
             <Link key={movie._id} to={`/details/${movie._id}`}>
-              <div className="relative overflow-hidden rounded-lg bg-gray-800 text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
+              <div className="relative overflow-hidden rounded-lg text-white shadow-lg transition-transform transform hover:scale-105 hover:shadow-2xl">
                 <img
                   src={movie.image}
                   alt={movie.name}
-                  className="w-full md:h-96 object-cover transition-transform duration-300 ease-in-out"
+                  className="w-3/4 mx-auto lg:w-full lg:h-96 object-cover transition-transform duration-300 ease-in-out"
                 />
                 <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 hover:opacity-100 transition-opacity duration-300 ease-in-out p-4 flex flex-col justify-between">
                   <div>

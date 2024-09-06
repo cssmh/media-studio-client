@@ -10,7 +10,7 @@ const Navbar = () => {
 
   // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
-    localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+    localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
   );
 
   // update state on toggle

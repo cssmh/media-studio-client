@@ -45,9 +45,9 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl min-h-[250px] sm:min-h-[450px] bg-black flex justify-center items-center">
+    <div className="mx-[1px] md:mx-0 relative overflow-hidden rounded-lg md:rounded-2xl min-h-[250px] sm:min-h-[450px] bg-black flex justify-center items-center">
       <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-black to-red-900 opacity-60"></div>
-      <div className="container pb-8 sm:pb-0 relative z-10">
+      <div className="container pb-8 sm:pb-0 relative">
         <Slider {...settings}>
           {HeroData.map((data) => (
             <div key={data.id} className="relative">
