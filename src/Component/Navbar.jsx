@@ -1,7 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
-import logo from "../assets/logo.png";
+import logo from "../assets/fav.jpg";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const handleLogout = () => {
@@ -63,7 +64,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <img src={logo} className="w-0 md:w-12" alt="" />
+        <img src={logo} className="w-0 md:w-10" alt="" />
         <a className="font-semibold text-xl pl-0 md:pl-2">Star CineMIX</a>
       </div>
       <div className="navbar-center hidden lg:flex">

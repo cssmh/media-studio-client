@@ -30,8 +30,8 @@ const getCategoryColor = (name) => {
 
 const AllCategory = () => {
   return (
-    <div className="py-8 px-4">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gradient bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+    <div className="p-4">
+      <h2 className="text-3xl font-bold text-center mb-8 text-gradient">
         Select Category
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

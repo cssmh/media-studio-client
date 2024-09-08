@@ -1,6 +1,6 @@
 const Newsletter = () => {
   return (
-    <div className="py-8 bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
+    <div className="py-8 bg-gradient-to-r from-purple-700 via-pink-700 to-red-700">
       <div className="container mx-auto px-4">
         <h2
           data-aos="fade-up"
@@ -18,14 +18,14 @@ const Newsletter = () => {
           <input
             type="email"
             placeholder="Enter your email address"
-            className="p-4 rounded-lg border border-transparent bg-white shadow-md mb-4 md:mb-0 md:mr-4 w-full md:w-1/2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="p-4 rounded-lg border border-gray-600 bg-gray-800 shadow-md mb-4 md:mb-0 md:mr-4 w-full md:w-1/2 text-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
             data-aos="fade-right"
             data-aos-duration="900"
             data-aos-delay="500"
           />
           <button
             type="submit"
-            className="px-6 py-3 bg-yellow-400 text-gray-900 font-semibold rounded-lg hover:bg-yellow-500 transition duration-300"
+            className="px-6 py-3 bg-yellow-500 text-gray-900 font-semibold rounded-lg hover:bg-yellow-600 transition duration-300"
             data-aos="fade-left"
             data-aos-duration="800"
             data-aos-delay="800"

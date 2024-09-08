@@ -41,9 +41,9 @@ const testimonials = [
 
 const Testimonials = () => {
   return (
-    <div className="py-12 bg-gray-50">
+    <div className="py-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12 text-gray-800">
+        <h2 className="text-4xl font-bold text-center mb-12">
           What Our Users Say
         </h2>
         <Swiper
@@ -72,15 +72,15 @@ const Testimonials = () => {
         >
           {testimonials.map((testimony) => (
             <SwiperSlide key={testimony.id}>
-              <div className="bg-white p-8 rounded-lg shadow-xl text-center">
-                <FaQuoteLeft className="text-5xl text-gray-400 mb-4 mx-auto" />
-                <p className="text-lg font-semibold mb-4 text-gray-700">
+              <div className="p-8 rounded-lg shadow-xl text-center">
+                <FaQuoteLeft className="text-5xl mb-4 mx-auto" />
+                <p className="text-lg font-semibold mb-4">
                   {testimony.quote}
                 </p>
-                <p className="text-sm font-medium text-gray-600">
+                <p className="text-sm font-medium">
                   {testimony.author}
                 </p>
-                <FaQuoteRight className="text-5xl text-gray-400 mt-4 mx-auto" />
+                <FaQuoteRight className="text-5xl mt-4 mx-auto" />
               </div>
             </SwiperSlide>
           ))}
