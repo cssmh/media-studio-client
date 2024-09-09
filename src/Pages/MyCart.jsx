@@ -4,11 +4,10 @@ import useAuth from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { deleteMyCart, getMyCart } from "../Api/movie";
 
-const Checkout = () => {
+const MyCart = () => {
   const { user } = useAuth();
   const [selectedItems, setSelectedItems] = useState([]);
 
-  // Fetch user's cart items
   const {
     data = [],
     isLoading,
@@ -17,7 +16,9 @@ const Checkout = () => {
     queryKey: ["myCart", user?.email],
     queryFn: () => getMyCart(user?.email),
   });
+  console.log(data);
 
+  // Function to handle deletion of an item
   const handleDelete = async (id, name) => {
     const willDelete = await swal({
       title: "Are you sure?",
@@ -35,6 +36,7 @@ const Checkout = () => {
     }
   };
 
+  // Function to handle checkbox change
   const handleCheckboxChange = (itemId) => {
     if (selectedItems.includes(itemId)) {
       setSelectedItems(selectedItems.filter((id) => id !== itemId));
@@ -43,6 +45,7 @@ const Checkout = () => {
     }
   };
 
+  // Function to handle proceeding to payment
   const handleProceedToPayment = () => {
     if (selectedItems.length > 0) {
       // Navigate to the payment page with the selected items
@@ -54,7 +57,22 @@ const Checkout = () => {
     }
   };
 
+  // Check if any item is already paid
+  const isPaymentSuccess = (paymentStatus) => paymentStatus === "success";
+
+  // Calculate total amount based on selected items
+  const calculateTotalAmount = () => {
+    return data.reduce((total, item) => {
+      if (selectedItems.includes(item._id) && !isPaymentSuccess(item.payment)) {
+        return total + item.price * item.seatCount; // Assuming seatCount is the field for the number of seats
+      }
+      return total;
+    }, 0);
+  };
+
   if (isLoading) return <p>Loading...</p>;
+
+  const totalAmount = calculateTotalAmount();
 
   return (
     <div className="max-w-6xl mx-auto mt-8">
@@ -88,6 +106,15 @@ const Checkout = () => {
                 Price
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
+                Seat Count
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
+                Total
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
+                Payment Status
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -100,6 +127,7 @@ const Checkout = () => {
                     type="checkbox"
                     checked={selectedItems.includes(cart._id)}
                     onChange={() => handleCheckboxChange(cart._id)}
+                    disabled={isPaymentSuccess(cart.payment)}
                   />
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -119,12 +147,30 @@ const Checkout = () => {
                   </p>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-base-900">{cart.price} BDT</div>
+                  <div className="text-sm text-base-900">{cart.price * cart.seats.length} BDT</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-base-900">{cart.seatCount}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-base-900">
+                    {cart.price * cart.seatCount} BDT
+                  </div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  {isPaymentSuccess(cart.payment) ? (
+                    <span className="text-green-600">Payment Successful</span>
+                  ) : (
+                    <span className="text-red-600">Pending</span>
+                  )}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <button
                     onClick={() => handleDelete(cart._id, cart.name)}
-                    className="text-red-600 hover:text-red-900"
+                    className={`text-red-600 hover:text-red-900 ${
+                      isPaymentSuccess(cart.payment) ? "cursor-not-allowed" : ""
+                    }`}
+                    disabled={isPaymentSuccess(cart.payment)}
                   >
                     Delete
                   </button>
@@ -134,21 +180,30 @@ const Checkout = () => {
           </tbody>
         </table>
       </div>
-      <div className="flex justify-center mt-8">
-        <button
-          onClick={handleProceedToPayment}
-          disabled={selectedItems.length === 0}
-          className={`text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center ${
-            selectedItems.length === 0
-              ? "bg-base-400 cursor-not-allowed"
-              : "bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
-          }`}
-        >
-            
-        </button>
+      <div className="flex justify-between mt-8">
+        <div className="text-lg font-semibold">
+          Total Amount: {totalAmount} BDT
+        </div>
+        <div className="flex justify-center">
+          <button
+            onClick={handleProceedToPayment}
+            disabled={
+              selectedItems.length === 0 ||
+              data.every((item) => isPaymentSuccess(item.payment))
+            }
+            className={`text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center ${
+              selectedItems.length === 0 ||
+              data.every((item) => isPaymentSuccess(item.payment))
+                ? "bg-gray-500 cursor-not-allowed"
+                : "bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+            }`}
+          >
+            Proceed to Payment
+          </button>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Checkout;
+export default MyCart;
