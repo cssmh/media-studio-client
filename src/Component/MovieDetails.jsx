@@ -1,7 +1,9 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import useAuth from "../hooks/useAuth";
-import { addCart } from "../Api/movie";
+import { useState } from "react";
+import SeatSelectionModal from "../Pages/SeatSelectionModal";
+import { addCart } from "../Api/movie"; // Import the API function
 
 const MovieDetails = () => {
   const { user } = useAuth();
@@ -9,30 +11,43 @@ const MovieDetails = () => {
   const { _id, name, image, media, media_type, price, description, rating } =
     loadDetailsData;
 
-  const dataToDatabase = {
-    movie_id: _id,
-    name: name,
-    image: image,
-    media: media,
-    media_type: media_type,
-    price: price,
-    rating: rating,
-    user_email: user?.email,
+  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const navigateTo = useNavigate();
+
+  const openModal = () => {
+    setShowModal(true);
   };
 
-  const handleAddCart = async () => {
-    try {
-      const response = await addCart(dataToDatabase);
-      if (response?.insertedId) {
-        swal("Good job!", `${name} added to cart`, "success");
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  const handleProceedToCheckout = async (selectedSeats) => {
+    if (selectedSeats.length > 0) {
+      const dataToDatabase = {
+        movie_id: _id,
+        name: name,
+        image: image,
+        price: price,
+        user_email: user?.email,
+        seats: selectedSeats,
+      };
+
+      try {
+        const response = await addCart(dataToDatabase); 
+        if (response?.insertedId) {
+          swal("Good job!", `${name} has been added to your cart!`, "success");
+          navigateTo("/my-cart");
+        }
+      } catch (error) {
+        console.error("Error adding to cart:", error);
+        swal("Oops!", "Something went wrong. Please try again.", "error");
       }
-    } catch (error) {
-      console.error("Error adding to cart:", error);
-      swal("Oops!", "Something went wrong. Please try again.", "error");
+    } else {
+      swal("Oops!", "Please select at least one seat.", "warning");
     }
   };
 
-  const navigateTo = useNavigate();
   const BackButton = () => {
     navigateTo(-1);
   };
@@ -51,10 +66,10 @@ const MovieDetails = () => {
         </p>
         <p className="md:w-96">{description}</p>
         <button
-          onClick={handleAddCart}
+          onClick={openModal}
           className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
         >
-          Add to Cart
+          Choose Your Seat
         </button>
         <br />
         <button
@@ -64,6 +79,12 @@ const MovieDetails = () => {
           Go Back
         </button>
       </div>
+      {showModal && (
+        <SeatSelectionModal
+          closeModal={closeModal}
+          handleProceedToCheckout={handleProceedToCheckout}
+        />
+      )}
     </div>
   );
 };
