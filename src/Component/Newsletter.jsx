@@ -5,7 +5,7 @@ const Newsletter = () => {
         <h2
           data-aos="fade-up"
           data-aos-duration="1000"
-          className="text-4xl font-bold text-center text-white mb-8"
+          className="text-3xl font-bold text-center text-white mb-8"
         >
           Subscribe to Our Newsletter
         </h2>

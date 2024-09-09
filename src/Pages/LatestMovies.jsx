@@ -13,7 +13,7 @@ const LatestMovies = () => {
 
   return (
     <div className="max-w-7xl mx-2 md:mx-auto py-9">
-      <h2 className="text-3xl font-bold text-center mb-8">Latest Movies</h2>
+      <h2 className="text-2xl font-bold text-center mb-8">Latest Movies</h2>
       <Swiper
         speed={200}
         grabCursor={true}
@@ -27,19 +27,19 @@ const LatestMovies = () => {
         spaceBetween={10}
         breakpoints={{
           480: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          768: {
             slidesPerView: 2,
             spaceBetween: 20,
           },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+          },
           1000: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             spaceBetween: 20,
           },
           1200: {
-            slidesPerView: 5,
+            slidesPerView: 6,
             spaceBetween: 20,
           },
         }}

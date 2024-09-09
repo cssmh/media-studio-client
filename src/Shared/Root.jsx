@@ -12,6 +12,7 @@ import CineUpdate from "../Component/CineUpdate";
 import MovieDetails from "../Component/MovieDetails";
 import MyProfile from "../Component/MyProfile";
 import { getMovieDetails, getTypeMovies } from "../Api/movie";
+import AllMovies from "../Pages/AllMovies";
 
 const Root = createBrowserRouter([
   {
@@ -32,7 +33,15 @@ const Root = createBrowserRouter([
         element: <Register />,
       },
       {
-        path: "/add-product",
+        path: "/all-movies",
+        element: (
+          <PrivateRoute>
+            <AllMovies />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/add-movies",
         element: (
           <PrivateRoute>
             <AddProduct />

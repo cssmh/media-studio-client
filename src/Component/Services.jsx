@@ -38,7 +38,7 @@ const Services = () => {
         <h2
           data-aos="fade-up"
           data-aos-duration="1000"
-          className="text-3xl font-bold text-center mb-12"
+          className="text-2xl font-bold text-center mb-12"
         >
           Our Services
         </h2>
