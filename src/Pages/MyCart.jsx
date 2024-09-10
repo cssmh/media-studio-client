@@ -2,7 +2,7 @@ import { useState } from "react";
 import swal from "sweetalert";
 import useAuth from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
-import { deleteMyCart, getMyCart } from "../Api/movie";
+import { addPayment, deleteMyCart, getMyCart } from "../Api/movie";
 
 const MyCart = () => {
   const { user } = useAuth();
@@ -16,9 +16,7 @@ const MyCart = () => {
     queryKey: ["myCart", user?.email],
     queryFn: () => getMyCart(user?.email),
   });
-  console.log(data);
-
-  // Function to handle deletion of an item
+  
   const handleDelete = async (id, name) => {
     const willDelete = await swal({
       title: "Are you sure?",
@@ -46,25 +44,30 @@ const MyCart = () => {
   };
 
   // Function to handle proceeding to payment
-  const handleProceedToPayment = () => {
+  const handleProceedToPayment = async () => {
     if (selectedItems.length > 0) {
-      // Navigate to the payment page with the selected items
-      swal("Success!", "Proceeding to Payment", "success");
-      // Navigate to the payment page, sending the selected items data
-      // navigate("/payment", { state: { selectedItems } });
+      try {
+        const response = await addPayment(selectedItems);
+        console.log(response);
+        if (response.modifiedCount > 0) {
+          swal("Success!", "Payment success", "success");
+          refetch();
+        }
+      } catch (error) {
+        console.error("Error updating payment status:", error);
+      }
     } else {
       swal("Oops!", "Please select at least one item to proceed.", "warning");
     }
   };
-
-  // Check if any item is already paid
+  
   const isPaymentSuccess = (paymentStatus) => paymentStatus === "success";
 
-  // Calculate total amount based on selected items
   const calculateTotalAmount = () => {
     return data.reduce((total, item) => {
       if (selectedItems.includes(item._id) && !isPaymentSuccess(item.payment)) {
-        return total + item.price * item.seatCount; // Assuming seatCount is the field for the number of seats
+        const price = parseFloat(item.price);
+        return total + price * item.seats.length; 
       }
       return total;
     }, 0);
@@ -75,15 +78,15 @@ const MyCart = () => {
   const totalAmount = calculateTotalAmount();
 
   return (
-    <div className="max-w-6xl mx-auto mt-8">
-      <h1 className="text-2xl text-center my-5 font-semibold">
+    <div className="max-w-6xl mx-auto mt-4">
+      <h1 className="text-2xl text-center mb-3 font-semibold">
         Total Cart Items: {data.length}
       </h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-base-200">
           <thead className="bg-base-50">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
+              <th className="px-3 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
                 <input
                   type="checkbox"
                   onChange={() => {
@@ -114,7 +117,7 @@ const MyCart = () => {
               <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
                 Payment Status
               </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
+              <th className="px-3  py-3 text-left text-xs font-medium text-base-500 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -122,7 +125,7 @@ const MyCart = () => {
           <tbody className="divide-y divide-base-200">
             {data.map((cart) => (
               <tr key={cart._id}>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-3 py-4 whitespace-nowrap">
                   <input
                     type="checkbox"
                     checked={selectedItems.includes(cart._id)}
@@ -130,14 +133,14 @@ const MyCart = () => {
                     disabled={isPaymentSuccess(cart.payment)}
                   />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="py-4 whitespace-nowrap">
                   <img
                     src={cart.image}
                     alt="cine"
                     className="w-20 h-20 object-cover"
                   />
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 py-4 whitespace-nowrap">
                   <div className="text-sm font-medium text-base-900">
                     {cart.name}
                   </div>
@@ -146,25 +149,29 @@ const MyCart = () => {
                     <span className="text-red-500">{cart.media_type}</span>
                   </p>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-base-900">{cart.price * cart.seats.length} BDT</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-base-900">{cart.seatCount}</div>
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 py-4 whitespace-nowrap">
                   <div className="text-sm text-base-900">
-                    {cart.price * cart.seatCount} BDT
+                    {parseFloat(cart.price) * cart.seats.length} BDT
+                  </div>
+                </td>
+                <td className="px-10 py-4 whitespace-nowrap">
+                  <div className="text-sm text-base-900">
+                    Total {cart.seats.length}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-base-900">
+                    {parseFloat(cart.price) * cart.seats.length} BDT
+                  </div>
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap">
                   {isPaymentSuccess(cart.payment) ? (
                     <span className="text-green-600">Payment Successful</span>
                   ) : (
                     <span className="text-red-600">Pending</span>
                   )}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className="px-5 py-4 whitespace-nowrap text-sm font-medium">
                   <button
                     onClick={() => handleDelete(cart._id, cart.name)}
                     className={`text-red-600 hover:text-red-900 ${

@@ -1,8 +1,11 @@
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { updateCine } from "../Api/movie";
+import useAuth from "../hooks/useAuth";
 
 const CineUpdate = () => {
+  const { user } = useAuth();
+  const admin = user?.email === import.meta.env.VITE_admin;
   const loadAllData = useLoaderData();
   const { _id, name, image, media, media_type, price, description, rating } =
     loadAllData;
@@ -10,6 +13,7 @@ const CineUpdate = () => {
 
   const handleUpdate = async (e) => {
     e.preventDefault();
+    if (!admin) return toast.error("Not authorized for you!");
     const form = e.target;
     const name = form.name.value;
     const image = form.image.value;

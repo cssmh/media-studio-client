@@ -5,11 +5,12 @@ import useAuth from "../hooks/useAuth";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const admin = user?.email === import.meta.env.VITE_admin;
+
   const handleLogout = () => {
     logOut().then().catch();
   };
 
-  // use theme from local storage if available or set light theme
   const [theme, setTheme] = useState(
     localStorage.getItem("theme") ? localStorage.getItem("theme") : "dark"
   );
@@ -22,7 +23,7 @@ const Navbar = () => {
       setTheme("dark");
     }
   };
-  
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
     const localTheme = localStorage.getItem("theme");
@@ -79,9 +80,11 @@ const Navbar = () => {
             <li>
               <NavLink to={"/all-movies"}>All Movies</NavLink>
             </li>
-            <li>
-              <NavLink to={"/add-movies"}>Add Movie</NavLink>
-            </li>
+            {admin && (
+              <li>
+                <NavLink to={"/add-movies"}>Add Movie</NavLink>
+              </li>
+            )}
             <li>
               <NavLink to={"/my-cart"}>My Cart</NavLink>
             </li>

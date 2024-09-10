@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { AiOutlineWarning } from "react-icons/ai"; // Example icon from react-icons
+import { AiOutlineWarning } from "react-icons/ai";
 
 const ErrorPage = () => {
   return (

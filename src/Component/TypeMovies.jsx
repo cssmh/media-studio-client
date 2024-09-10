@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const TypeMovies = () => {
+  const { user } = useAuth();
+  const admin = user?.email === import.meta.env.VITE_admin;
   const { result, getType } = useLoaderData();
   const [filter, setFilter] = useState(result);
   const navigateTo = useNavigate();
@@ -70,11 +73,13 @@ const TypeMovies = () => {
                         Details
                       </button>
                     </Link>
-                    <Link to={`/update/${movie._id}`}>
-                      <button className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                        Update
-                      </button>
-                    </Link>
+                    {admin && (
+                      <Link to={`/update/${movie._id}`}>
+                        <button className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                          Update
+                        </button>
+                      </Link>
+                    )}
                     <button
                       onClick={handleBack}
                       className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"

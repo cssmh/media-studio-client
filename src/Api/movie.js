@@ -44,3 +44,8 @@ export const updateCine = async (id, updatedData) => {
   const { data } = await axiosSecure.put(`cine/${id}`, updatedData);
   return data;
 };
+
+export const addPayment = async (selectedItems) => {
+  const { data } = await axiosSecure.put("/cart-payment", { selectedItems });
+  return data;
+};
