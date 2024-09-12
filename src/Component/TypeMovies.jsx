@@ -28,7 +28,7 @@ const TypeMovies = () => {
   return (
     <div>
       <h1 className="text-2xl text-center font-semibold mt-4 capitalize">
-        {`${getType || "Movie"} Categories`}
+        {`${getType.replace(/_/g, " ") || "Movie"} Categories`}
       </h1>
       {filter.length === 0 ? (
         <p className="h-[50vh] flex justify-center items-center text-center my-12 text-red-500">
@@ -55,7 +55,9 @@ const TypeMovies = () => {
                 <div className="card-body px-11 py-5 font-semibold">
                   <h2 className="card-title text-2xl">{movie.name}</h2>
                   <p>
-                    <span className="text-green-500">{movie.media}</span>{" "}
+                    <span className="text-green-500 capitalize">
+                      {movie.media.replace(/_/g, " ")}
+                    </span>{" "}
                     <span className="text-red-500">{movie.media_type}</span>{" "}
                   </p>
                   <p>

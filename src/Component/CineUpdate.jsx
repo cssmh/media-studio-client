@@ -61,9 +61,10 @@ const CineUpdate = () => {
         <input
           type="text"
           name="image"
+          required
           defaultValue={image}
           className="input input-bordered"
-          required
+          style={{ outline: "none" }}
         />
       </div>
       <div className="form-control">
@@ -74,14 +75,15 @@ const CineUpdate = () => {
           id="1"
           name="media_name"
           className="input input-bordered"
+          style={{ outline: "none" }}
           defaultValue={media}
         >
-          <option value="Disney">Disney</option>
-          <option value="Netflix">Netflix</option>
-          <option value="Sony Pictures">Sony Pictures</option>
-          <option value="Spotify">Spotify</option>
-          <option value="Time Warner">Time Warner</option>
-          <option value="Warner Bros">Warner Bros</option>
+          <option value="disney">Disney</option>
+          <option value="netflix">Netflix</option>
+          <option value="sony_pictures">Sony Pictures</option>
+          <option value="warner_bros">Warner Bros</option>
+          <option value="universal_pictures">Universal Pictures</option>
+          <option value="amazon_studios">Amazon Studios</option>
         </select>
       </div>
       <div className="form-control">
@@ -91,8 +93,9 @@ const CineUpdate = () => {
         <select
           id="2"
           name="media_type"
-          className="input input-bordered"
           defaultValue={media_type}
+          className="input input-bordered"
+          style={{ outline: "none" }}
         >
           <option value="Movie">Movie</option>
           <option value="Series">TV Series</option>
@@ -110,6 +113,7 @@ const CineUpdate = () => {
           defaultValue={price}
           required
           className="input input-bordered"
+          style={{ outline: "none" }}
         />
       </div>
       <div className="form-control">
@@ -123,6 +127,7 @@ const CineUpdate = () => {
           required
           rows="10"
           className="input input-bordered"
+          style={{ outline: "none" }}
         ></input>
       </div>
 
@@ -136,6 +141,7 @@ const CineUpdate = () => {
           required
           name="rating"
           className="input input-bordered"
+          style={{ outline: "none" }}
         />
       </div>
 

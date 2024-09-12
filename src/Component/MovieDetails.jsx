@@ -3,7 +3,7 @@ import swal from "sweetalert";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import SeatSelectionModal from "../Pages/SeatSelectionModal";
-import { addCart } from "../Api/movie"; // Import the API function
+import { addCart } from "../Api/movie";
 
 const MovieDetails = () => {
   const { user } = useAuth();
@@ -34,7 +34,7 @@ const MovieDetails = () => {
       };
 
       try {
-        const response = await addCart(dataToDatabase); 
+        const response = await addCart(dataToDatabase);
         if (response?.insertedId) {
           swal("Good job!", `${name} has been added to your cart!`, "success");
           navigateTo("/my-cart");
@@ -58,7 +58,7 @@ const MovieDetails = () => {
       <div className="space-y-2 px-12 md:px-0">
         <h1 className="text-3xl">{name}</h1>
         <p>
-          <span className="text-green-500">{media}</span>{" "}
+          <span className="text-green-500 capitalize">{media.replace(/_/g, " ")}</span>{" "}
           <span className="text-red-500">{media_type}</span>
         </p>
         <p>

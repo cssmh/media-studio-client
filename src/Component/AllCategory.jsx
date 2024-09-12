@@ -4,9 +4,9 @@ const categories = [
   "Disney",
   "Netflix",
   "Sony Pictures",
-  "Spotify",
-  "Time Warner",
   "Warner Bros",
+  "Universal Pictures",
+  "Amazon Studios",
 ];
 
 const getCategoryColor = (name) => {
@@ -17,12 +17,12 @@ const getCategoryColor = (name) => {
       return "bg-gradient-to-r from-red-600 to-red-800";
     case "Sony Pictures":
       return "bg-gradient-to-r from-purple-500 to-purple-700";
-    case "Spotify":
-      return "bg-gradient-to-r from-green-400 to-green-600";
-    case "Time Warner":
-      return "bg-gradient-to-r from-orange-500 to-orange-700";
     case "Warner Bros":
       return "bg-gradient-to-r from-yellow-500 to-yellow-700";
+    case "Universal Pictures":
+      return "bg-gradient-to-r from-blue-700 to-blue-900";
+    case "Amazon Studios":
+      return "bg-gradient-to-r from-orange-500 to-orange-700";
     default:
       return "bg-gradient-to-r from-gray-400 to-gray-600";
   }
@@ -44,7 +44,7 @@ const AllCategory = () => {
             data-aos-delay={index * 100}
           >
             <Link
-              to={`category/${category.toLowerCase().replace(/ /g, "-")}`}
+              to={`category/${category.toLowerCase().replace(/ /g, "_")}`}
               className={`flex flex-col items-center justify-center h-full p-8 text-center ${getCategoryColor(
                 category
               )} hover:scale-105 transition-all duration-300 rounded-lg`}

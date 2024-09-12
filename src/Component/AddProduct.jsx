@@ -43,9 +43,10 @@ const AddProduct = () => {
         </label>
         <input
           type="text"
+          required
           name="name"
           className="input input-bordered"
-          required
+          style={{ outline: "none" }}
         />
       </div>
       <div className="form-control">
@@ -54,29 +55,40 @@ const AddProduct = () => {
         </label>
         <input
           type="text"
+          required
           name="image"
           className="input input-bordered"
-          required
+          style={{ outline: "none" }}
         />
       </div>
       <div className="form-control">
         <label className="label">
           <span className="label-text">Cinemix Name</span>
         </label>
-        <select id="n" name="media_name" className="input input-bordered">
-          <option value="Disney">Disney</option>
-          <option value="Netflix">Netflix</option>
-          <option value="Sony Pictures">Sony Pictures</option>
-          <option value="Spotify">Spotify</option>
-          <option value="Time Warner">Time Warner</option>
-          <option value="Warner Bros">Warner Bros</option>
+        <select
+          style={{ outline: "none" }}
+          id="n"
+          name="media_name"
+          className="input input-bordered"
+        >
+          <option value="disney">Disney</option>
+          <option value="netflix">Netflix</option>
+          <option value="sony_pictures">Sony Pictures</option>
+          <option value="warner_bros">Warner Bros</option>
+          <option value="universal_pictures">Universal Pictures</option>
+          <option value="amazon_studios">Amazon Studios</option>
         </select>
       </div>
       <div className="form-control">
         <label className="label">
           <span className="label-text">Type</span>
         </label>
-        <select id="t" name="media_type" className="input input-bordered">
+        <select
+          style={{ outline: "none" }}
+          id="t"
+          name="media_type"
+          className="input input-bordered"
+        >
           <option value="Movie">Movie</option>
           <option value="Series">TV Series</option>
           <option value="Animation">Animation</option>
@@ -92,6 +104,7 @@ const AddProduct = () => {
           name="price"
           required
           className="input input-bordered"
+          style={{ outline: "none" }}
         />
       </div>
       <div className="form-control">
@@ -101,24 +114,22 @@ const AddProduct = () => {
         <input
           name="description"
           cols="20"
-          required
           rows="10"
           className="input input-bordered"
+          style={{ outline: "none" }}
         ></input>
       </div>
-
       <div className="form-control">
         <label className="label">
           <span className="label-text">Rating</span>
         </label>
         <input
           type="text"
-          required
           name="rating"
           className="input input-bordered"
+          style={{ outline: "none" }}
         />
       </div>
-
       <div className="form-control mt-6">
         <button className="btn bg-purple-600 hover:bg-purple-600 text-white">
           Add CineMIX
