@@ -7,11 +7,9 @@ const MainLayout = () => {
   const navigation = useNavigation();
   return (
     <div>
-      <div className="max-w-[1310px] mx-auto">
-        <Navbar />
-        <div className="min-h-[80vh]">
-          {navigation.state === "loading" ? <SmallLoader /> : <Outlet />}
-        </div>
+      <Navbar />
+      <div className="min-h-[80vh]">
+        {navigation.state === "loading" ? <SmallLoader /> : <Outlet />}
       </div>
       <Footer />
     </div>
