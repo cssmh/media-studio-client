@@ -15,8 +15,8 @@ const Home = () => {
       </Helmet>
       <Banner />
       <NowPlaying />
-      <TopMovies />
       <Experience />
+      <TopMovies />
       <div className="max-w-6xl mx-auto">
         <AllCategory />
       </div>
