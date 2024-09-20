@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
 import AllCategory from "./AllCategory";
-import Services from "./Services";
-import LatestMovies from "../Pages/LatestMovies";
-import FeaturedMovies from "./FeaturedMovies";
+import NowPlaying from "../Pages/NowPlaying";
+import TopMovies from "./TopMovies";
 import Testimonials from "./Testimonials";
 import Newsletter from "./Newsletter";
+import Experience from "../Pages/Experience";
 
 const Home = () => {
   return (
@@ -14,12 +14,12 @@ const Home = () => {
         <title>Star CineMix - Book Your Ticket</title>
       </Helmet>
       <Banner />
-      <LatestMovies />
-      <Services />
+      <NowPlaying />
+      <TopMovies />
+      <Experience />
       <div className="max-w-6xl mx-auto">
         <AllCategory />
       </div>
-      <FeaturedMovies />
       <Testimonials />
       <Newsletter />
     </div>

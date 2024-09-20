@@ -1,11 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { getFeaturedMovies } from "../Api/movie";
+import { getTopMovies } from "../Api/movie";
 import { Link } from "react-router-dom";
 
 const AllMovies = () => {
   const { data = [], isLoading } = useQuery({
     queryKey: ["allMovies"],
-    queryFn: () => getFeaturedMovies(),
+    queryFn: () => getTopMovies(),
   });
 
   if (isLoading) {

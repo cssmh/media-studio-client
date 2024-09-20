@@ -1,18 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import { getFeaturedMovies } from "../Api/movie";
 import { Link } from "react-router-dom";
+import { getTopMovies } from "../Api/movie";
 
-const FeaturedMovies = () => {
+const TopMovies = () => {
   const { data = [] } = useQuery({
-    queryKey: ["featuredMovies"],
-    queryFn: () => getFeaturedMovies(),
+    queryKey: ["topMovies"],
+    queryFn: () => getTopMovies(),
   });
 
   return (
     <div className="py-8">
       <div className="container mx-auto px-4">
         <h2 className="text-2xl font-extrabold text-center mb-8">
-          Featured Movies
+          Top Movies in Theatre
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
           {data?.slice(0, 12).map((movie) => (
@@ -40,4 +40,4 @@ const FeaturedMovies = () => {
   );
 };
 
-export default FeaturedMovies;
+export default TopMovies;

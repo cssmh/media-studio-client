@@ -48,7 +48,7 @@ const Navbar = () => {
           </span>
         </p>
       </div>
-      <div className="navbar h-[59px] mb-3 px-2 lg:px-12">
+      <div className="navbar h-[59px] px-2 lg:px-12">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

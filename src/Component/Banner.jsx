@@ -54,6 +54,10 @@ const Banner = () => {
     return () => clearInterval(interval);
   }, []);
 
+  const handleClick = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <div className="relative overflow-hidden min-h-[250px] sm:min-h-[450px] flex justify-center items-center">
       <img
@@ -67,7 +71,10 @@ const Banner = () => {
             {HeroData[currentIndex].movieName}
           </h2>
           <h1 className="text-lg font-bold text-white drop-shadow-lg">
-            From <span className="text-2xl italic">{HeroData[currentIndex].Time}</span>
+            From{" "}
+            <span className="text-2xl italic">
+              {HeroData[currentIndex].Time}
+            </span>
           </h1>
           <h1 className="text-md font-bold uppercase text-white">
             {HeroData[currentIndex].Details}
@@ -78,8 +85,11 @@ const Banner = () => {
         {HeroData.map((_, index) => (
           <div
             key={index}
-            className={`w-8 h-8 flex items-center justify-center rounded-full font-bold text-white ${
-              index === currentIndex ? "bg-yellow-500" : "bg-black"
+            onClick={() => handleClick(index)}
+            className={`w-8 h-8 flex items-center justify-center rounded-full font-bold text-white cursor-pointer transition duration-300 ${
+              index === currentIndex
+                ? "bg-yellow-500"
+                : "bg-black hover:bg-gray-700"
             }`}
           >
             {index + 1}
