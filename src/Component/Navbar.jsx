@@ -6,6 +6,7 @@ import useAuth from "../hooks/useAuth";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const location = useLocation();
+  const home = location.pathname === "/";
   const admin = user?.email === import.meta.env.VITE_admin;
 
   const handleLogout = () => {
@@ -48,7 +49,7 @@ const Navbar = () => {
           </span>
         </p>
       </div>
-      <div className="navbar h-[59px] px-2 lg:px-12">
+      <div className={`navbar h-[59px] px-2 lg:px-12 ${!home && "border-b"}`}>
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

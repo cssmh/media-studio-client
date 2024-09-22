@@ -37,7 +37,7 @@ const TopMovies = () => {
             modules={[Pagination, Autoplay]}
             className="mySwiper"
             slidesPerView={1}
-            spaceBetween={11}
+            spaceBetween={7}
             breakpoints={{
               480: {
                 slidesPerView: 2,

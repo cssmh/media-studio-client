@@ -59,7 +59,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="relative overflow-hidden min-h-[250px] sm:min-h-[450px] flex justify-center items-center">
+    <div className="relative overflow-hidden min-h-[250px] sm:min-h-[500px] flex justify-center items-center">
       <img
         src={HeroData[currentIndex].img}
         alt="Hero Image"
