@@ -1,12 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/img_66.png";
+import logo from "../assets/cinemix.webp";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import LoginModal from "./LoginModal";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const location = useLocation();
   const home = location.pathname === "/";
+  const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const admin = user?.email === import.meta.env.VITE_admin;
 
   const handleLogout = () => {
@@ -52,7 +54,11 @@ const Navbar = () => {
       <div className={`navbar h-[59px] px-2 lg:px-12 ${!home && "border-b"}`}>
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-sm btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -74,7 +80,7 @@ const Navbar = () => {
             >
               <Link
                 to="/"
-                className={`px-3 flex items-center p-[2px] ${getLinkClasses(
+                className={`px-2 flex items-center p-[2px] ${getLinkClasses(
                   "/"
                 )}`}
               >
@@ -82,7 +88,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/all-movies"
-                className={`px-3 flex items-center p-[2px] ${getLinkClasses(
+                className={`px-2 flex items-center p-[2px] ${getLinkClasses(
                   "/all-movies"
                 )}`}
               >
@@ -90,7 +96,7 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/show-time"
-                className={`px-3 flex items-center p-[2px] ${getLinkClasses(
+                className={`px-2 flex items-center p-[2px] ${getLinkClasses(
                   "/show-time"
                 )}`}
               >
@@ -98,16 +104,24 @@ const Navbar = () => {
               </Link>
               <Link
                 to="/top-rated"
-                className={`px-3 flex items-center p-[2px] ${getLinkClasses(
+                className={`px-2 flex items-center p-[2px] ${getLinkClasses(
                   "/top-rated"
                 )}`}
               >
                 Top Rated
               </Link>
+              <Link
+                to="/my-bookings"
+                className={`px-2 flex items-center p-[2px] ${getLinkClasses(
+                  "/my-bookings"
+                )}`}
+              >
+                My Bookings
+              </Link>
               {admin && (
                 <Link
                   to="/add-movie"
-                  className={`px-3 flex items-center p-[2px] ${getLinkClasses(
+                  className={`px-2 flex items-center p-[2px] ${getLinkClasses(
                     "/add-movie"
                   )}`}
                 >
@@ -116,7 +130,7 @@ const Navbar = () => {
               )}
             </ul>
           </div>
-          <img src={logo} className="w-28" alt="" />
+          <img src={logo} className="w-24" alt="" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 space-x-3">
@@ -152,6 +166,14 @@ const Navbar = () => {
             >
               Top Rated
             </Link>
+            <Link
+              to="/my-bookings"
+              className={`flex font-semibold items-center p-2 ${getLinkClasses(
+                "/my-bookings"
+              )}`}
+            >
+              My Bookings
+            </Link>
             {admin && (
               <Link
                 to="/add-movie"
@@ -165,29 +187,6 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search movies..."
-              className="input input-bordered w-full max-w-xs"
-            />
-            <button className="absolute right-0 top-0 mt-3 mr-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 text-gray-500"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1111.5 4.5a7.5 7.5 0 017.15 12.15z"
-                />
-              </svg>
-            </button>
-          </div>
           {/* theme switch */}
           <label className="swap swap-rotate mr-2">
             <input
@@ -198,7 +197,7 @@ const Navbar = () => {
               className="theme-controller"
             />
             <svg
-              className="swap-on fill-current w-10 h-10"
+              className="swap-on fill-current w-8 h-8"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -206,7 +205,7 @@ const Navbar = () => {
             </svg>
             {/* moon icon */}
             <svg
-              className="swap-off fill-current w-10 h-10"
+              className="swap-off fill-current w-8 h-8"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
             >
@@ -216,7 +215,7 @@ const Navbar = () => {
           {user?.email ? (
             <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
+                <div className="w-8 rounded-full">
                   <img src={user?.photoURL} alt={user?.displayName} />
                 </div>
               </label>
@@ -242,14 +241,19 @@ const Navbar = () => {
               </ul>
             </div>
           ) : (
-            <Link to="/login">
-              <button className="btn btn-sm border-purple-500 btn-outline">
-                Login
-              </button>
-            </Link>
+            <button
+              onClick={() => setLoginModalOpen(true)}
+              className="btn btn-sm border-purple-500 btn-outline"
+            >
+              Login
+            </button>
           )}
         </div>
       </div>
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setLoginModalOpen(false)}
+      />
     </div>
   );
 };

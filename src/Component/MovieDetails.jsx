@@ -3,7 +3,7 @@ import swal from "sweetalert";
 import useAuth from "../hooks/useAuth";
 import { useState } from "react";
 import SeatSelectionModal from "../Pages/SeatSelectionModal";
-import { addCart } from "../Api/movie";
+import { addBooking } from "../Api/movie";
 
 const MovieDetails = () => {
   const { user } = useAuth();
@@ -34,7 +34,7 @@ const MovieDetails = () => {
       };
 
       try {
-        const response = await addCart(dataToDatabase);
+        const response = await addBooking(dataToDatabase);
         if (response?.insertedId) {
           swal("Good job!", `${name} has been added to your cart!`, "success");
           navigateTo("/my-cart");

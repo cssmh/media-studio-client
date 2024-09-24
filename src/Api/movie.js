@@ -10,13 +10,8 @@ export const getNowPlaying = async () => {
   return data;
 };
 
-export const getTypeMovies = async (type) => {
-  const { data } = await axiosSecure(`/type-movies/${type}`);
-  return data;
-};
-
-export const getMyCart = async (email) => {
-  const { data } = await axiosSecure(`/cart/${email}`);
+export const getMyBookings = async (email) => {
+  const { data } = await axiosSecure(`/my-bookings/${email}`);
   return data;
 };
 
@@ -25,13 +20,13 @@ export const getMovieDetails = async (id) => {
   return data;
 };
 
-export const deleteMyCart = async (id) => {
-  const { data } = await axiosSecure.delete(`/cart/${id}`);
+export const deleteMyBooking = async (id) => {
+  const { data } = await axiosSecure.delete(`/my-booking/${id}`);
   return data;
 };
 
-export const addCart = async (cartData) => {
-  const { data } = await axiosSecure.post("/add-cart", cartData);
+export const addBooking = async (cartData) => {
+  const { data } = await axiosSecure.post("/add-booking", cartData);
   return data;
 };
 

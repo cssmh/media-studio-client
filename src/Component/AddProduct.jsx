@@ -40,7 +40,6 @@ const AddProduct = () => {
       onSubmit={handleAddCine}
       className="md:w-3/4 lg:w-1/2 mx-2 md:mx-auto"
     >
-      {/* Name */}
       <div className="form-control">
         <label className="label">
           <span className="label-text">Name</span>
@@ -54,8 +53,6 @@ const AddProduct = () => {
           aria-label="Name of the movie or series"
         />
       </div>
-
-      {/* Image URL */}
       <div className="form-control">
         <label className="label">
           <span className="label-text">Image URL</span>
@@ -69,8 +66,6 @@ const AddProduct = () => {
           aria-label="Image URL for the movie or series"
         />
       </div>
-
-      {/* Cinemix Name */}
       <div className="form-control">
         <label className="label">
           <span className="label-text">Cinemix Name</span>
@@ -90,8 +85,6 @@ const AddProduct = () => {
           <option value="amazon_studios">Amazon Studios</option>
         </select>
       </div>
-
-      {/* Media Type */}
       <div className="form-control">
         <label className="label">
           <span className="label-text">Type</span>
@@ -109,8 +102,6 @@ const AddProduct = () => {
           <option value="Anime">Anime</option>
         </select>
       </div>
-
-      {/* Price */}
       <div className="form-control">
         <label className="label">
           <span className="label-text">Price</span>
@@ -125,15 +116,12 @@ const AddProduct = () => {
           aria-label="Price of the movie or series"
         />
       </div>
-
-      {/* Description */}
       <div className="form-control">
         <label className="label">
           <span className="label-text">Description</span>
         </label>
         <textarea
           name="description"
-          required
           rows="5"
           className="textarea textarea-bordered"
           style={{ outline: "none" }}

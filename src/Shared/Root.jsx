@@ -2,19 +2,16 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "./MainLayout";
 import ErrorPage from "../Component/ErrorPage";
 import Home from "../Component/Home";
-import Login from "../Component/Login";
-import Register from "../Component/Register";
 import PrivateRoute from "./PrivateRoute";
 import AddProduct from "../Component/AddProduct";
-import MyCart from "../Pages/MyCart";
-import TypeMovies from "../Component/TypeMovies";
 import CineUpdate from "../Component/CineUpdate";
 import MovieDetails from "../Component/MovieDetails";
 import MyProfile from "../Component/MyProfile";
-import { getMovieDetails, getTypeMovies } from "../Api/movie";
 import AllMovies from "../Pages/AllMovies";
 import ShowTime from "../Pages/ShowTime";
 import TopRated from "../Pages/TopRated";
+import MyBookings from "../Pages/MyBookings";
+import { getMovieDetails } from "../Api/movie";
 
 const Root = createBrowserRouter([
   {
@@ -23,8 +20,6 @@ const Root = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
-      { path: "/login", element: <Login /> },
-      { path: "/register", element: <Register /> },
       {
         path: "/all-movies",
         element: (
@@ -36,25 +31,20 @@ const Root = createBrowserRouter([
       { path: "/show-time", element: <ShowTime /> },
       { path: "/top-rated", element: <TopRated /> },
       {
+        path: "/my-bookings",
+        element: (
+          <PrivateRoute>
+            <MyBookings />
+          </PrivateRoute>
+        ),
+      },
+      {
         path: "/add-movie",
         element: (
           <PrivateRoute>
             <AddProduct />
           </PrivateRoute>
         ),
-      },
-      {
-        path: "/my-cart",
-        element: (
-          <PrivateRoute>
-            <MyCart />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/category/:type",
-        element: <TypeMovies />,
-        loader: ({ params }) => getTypeMovies(params.type),
       },
       {
         path: "/update/:id",

@@ -1,9 +1,8 @@
-import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import LoginModal from "../Component/LoginModal";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  const loc = useLocation();
   if (loading) {
     <div className="flex justify-center my-12">
       <span className="loading loading-dots loading-lg"></span>
@@ -12,7 +11,7 @@ const PrivateRoute = ({ children }) => {
   }
 
   if (user) return children;
-  return <Navigate state={loc.pathname} to={"/login"}></Navigate>;
+  return <LoginModal isOpen={true} onClose={false} />;
 };
 
 export default PrivateRoute;

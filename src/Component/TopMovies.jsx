@@ -23,7 +23,7 @@ const TopMovies = () => {
       }}
     >
       <div className="relative max-w-7xl mx-2 md:mx-auto py-12">
-        <div className="bg-gradient-to-b from-black/80 to-transparent p-8 rounded-lg">
+        <div className="p-8 rounded-lg">
           <h2 className="text-3xl font-extrabold text-center mb-12 text-white drop-shadow-lg">
             Top Movies in Theatre
           </h2>
@@ -59,7 +59,7 @@ const TopMovies = () => {
               },
             }}
           >
-            {data?.map((movie, idx) => (
+            {data?.slice(7, 16).map((movie, idx) => (
               <SwiperSlide key={idx}>
                 <div className="relative overflow-hidden rounded-lg text-white shadow-lg transform transition-transform hover:scale-105 hover:shadow-2xl">
                   <img
