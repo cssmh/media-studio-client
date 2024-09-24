@@ -1,100 +1,112 @@
-import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import Image1 from "../assets/img_1.jpg";
-import Image2 from "../assets/img_2.jpg";
-import Image3 from "../assets/img_3.jpg";
-import Image4 from "../assets/img_4.jpg";
-import Image5 from "../assets/img_5.jpg";
+import Image1 from "../assets/banner1.jpg";
+import Image2 from "../assets/banner2.jpg";
+import Image3 from "../assets/banner3.avif";
 
 const HeroData = [
   {
     id: 1,
     img: Image1,
-    movieName: "Kubo and the Two",
-    Time: "Feb 15",
-    Details: "Sony",
+    subtitle: "Exclusive",
+    title: "Marvel",
+    title2: "Sony",
   },
   {
     id: 2,
     img: Image2,
-    movieName: "The Hurricane Height",
-    Time: "April 09",
-    Details: "Netflix",
+    subtitle: "Exclusive",
+    title: "Horror",
+    title2: "Netflix",
   },
   {
     id: 3,
     img: Image3,
-    movieName: "Jumanji: Welcome to the Jungle",
-    Time: "Feb 16",
-    Details: "Warner",
-  },
-  {
-    id: 4,
-    img: Image4,
-    movieName: "Death Wish",
-    Time: "July 26",
-    Details: "Warner",
-  },
-  {
-    id: 5,
-    img: Image5,
-    movieName: "Supersonic",
-    Time: "April 26",
-    Details: "Warner",
+    subtitle: "Exclusive",
+    title: "Hollywood",
+    title2: "Warner",
   },
 ];
 
 const Banner = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % HeroData.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleClick = (index) => {
-    setCurrentIndex(index);
+  const settings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 800,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    cssEase: "ease-in-out",
+    pauseOnHover: false,
+    pauseOnFocus: true,
   };
 
   return (
-    <div className="relative overflow-hidden min-h-[250px] sm:min-h-[500px] flex justify-center items-center">
-      <img
-        src={HeroData[currentIndex].img}
-        alt="Hero Image"
-        className="absolute inset-0 w-full h-full object-cover z-0"
-      />
-      <div className="relative z-10 container flex flex-col sm:flex-row items-center h-full">
-        <div className="flex flex-col justify-center gap-6 sm:pl-8 text-center sm:text-left">
-          <h2 className="text-lg sm:text-4xl lg:text-6xl font-bold text-white uppercase tracking-wide">
-            {HeroData[currentIndex].movieName}
-          </h2>
-          <h1 className="text-lg font-bold text-white drop-shadow-lg">
-            From{" "}
-            <span className="text-2xl italic">
-              {HeroData[currentIndex].Time}
-            </span>
-          </h1>
-          <h1 className="text-md font-bold uppercase text-white">
-            {HeroData[currentIndex].Details}
-          </h1>
-        </div>
-      </div>
-      <div className="absolute bottom-4 left-4 flex space-x-2">
-        {HeroData.map((_, index) => (
-          <div
-            key={index}
-            onClick={() => handleClick(index)}
-            className={`w-8 h-8 flex items-center justify-center rounded-full font-bold text-white cursor-pointer transition duration-300 ${
-              index === currentIndex
-                ? "bg-yellow-500"
-                : "bg-black hover:bg-gray-700"
-            }`}
-          >
-            {index + 1}
-          </div>
-        ))}
+    <div className="mx-[1px] md:mx-0 relative overflow-hidden min-h-[250px] sm:min-h-[500px] bg-black flex justify-center items-center">
+      <div className="absolute inset-0 bg-gradient-to-r from-red-900 via-black to-red-900 opacity-60"></div>
+      <div className="container pb-8 sm:pb-0 relative">
+        <Slider {...settings}>
+          {HeroData.map((data) => (
+            <div key={data.id} className="relative">
+              <div className="grid grid-cols-1 sm:grid-cols-2">
+                <div className="flex flex-col justify-center gap-6 sm:pl-8 pt-12 sm:pt-16 text-center sm:text-left relative z-20">
+                  <h2
+                    data-aos="fade-up"
+                    data-aos-duration="600"
+                    data-aos-once="true"
+                    className="text-lg sm:text-2xl lg:text-3xl font-semibold text-red-400 uppercase tracking-wide"
+                  >
+                    {data.subtitle}
+                  </h2>
+                  <h1
+                    data-aos="fade-up"
+                    data-aos-duration="600"
+                    data-aos-delay="200"
+                    data-aos-once="true"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white drop-shadow-lg"
+                  >
+                    {data.title}
+                  </h1>
+                  <h1
+                    data-aos="fade-up"
+                    data-aos-duration="600"
+                    data-aos-delay="400"
+                    data-aos-once="true"
+                    className="text-6xl sm:text-8xl lg:text-9xl font-bold uppercase text-red-500"
+                  >
+                    {data.title2}
+                  </h1>
+                  <button
+                    className="md:w-1/2 mb-8 md:mb-12 px-8 py-3 bg-red-500 text-white font-semibold rounded-lg shadow-lg hover:bg-red-600 transition duration-300"
+                    data-aos="fade-up"
+                    data-aos-delay="600"
+                  >
+                    Buy Tickets Now
+                  </button>
+                </div>
+                {/* Image section */}
+                <div className="order-1 sm:order-2 flex justify-center items-center">
+                  <div
+                    data-aos="zoom-in"
+                    data-aos-duration="600"
+                    data-aos-once="true"
+                    className="relative z-10"
+                  >
+                    <img
+                      src={data.img}
+                      alt=""
+                      className="w-full h-full object-cover mx-auto drop-shadow-2xl"
+                      style={{ maxWidth: "600px", maxHeight: "400px" }}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </div>
     </div>
   );

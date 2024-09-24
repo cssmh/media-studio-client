@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "./Banner";
 import NowPlaying from "../Pages/NowPlaying";
-import Offer from "./Offer";
+import SpecialOffer from "./SpecialOffer";
 import TopMovies from "./TopMovies";
 import Experience from "../Pages/Experience";
 
@@ -13,7 +13,7 @@ const Home = () => {
       </Helmet>
       <Banner />
       <NowPlaying />
-      <Offer />
+      <SpecialOffer />
       <TopMovies />
       <Experience />
     </div>

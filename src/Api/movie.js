@@ -1,12 +1,12 @@
 import axiosSecure from ".";
 
-export const getNowPlaying = async () => {
-  const { data } = await axiosSecure("/latest-movies");
+export const getTopMovies = async () => {
+  const { data } = await axiosSecure("/top-movies");
   return data;
 };
 
-export const getTopMovies = async () => {
-  const { data } = await axiosSecure("/featured-movies");
+export const getNowPlaying = async () => {
+  const { data } = await axiosSecure("/now-playing");
   return data;
 };
 

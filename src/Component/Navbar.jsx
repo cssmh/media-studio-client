@@ -18,7 +18,7 @@ const Navbar = () => {
   );
 
   const getLinkClasses = (path) => {
-    return location.pathname === path ? "underline text-yellow-500" : "";
+    return location.pathname === path ? "underline text-yellow-600" : "";
   };
 
   const handleToggle = (e) => {
@@ -89,14 +89,6 @@ const Navbar = () => {
                 Movies
               </Link>
               <Link
-                to="/single-movie"
-                className={`px-3 flex items-center p-[2px] ${getLinkClasses(
-                  "/single-movie"
-                )}`}
-              >
-                Single Movie
-              </Link>
-              <Link
                 to="/show-time"
                 className={`px-3 flex items-center p-[2px] ${getLinkClasses(
                   "/show-time"
@@ -145,14 +137,6 @@ const Navbar = () => {
               Movies
             </Link>
             <Link
-              to="/single-movie"
-              className={`flex font-semibold items-center px-2 ${getLinkClasses(
-                "/single-movie"
-              )}`}
-            >
-              Single Movie
-            </Link>
-            <Link
               to="/show-time"
               className={`flex font-semibold items-center p-2 ${getLinkClasses(
                 "/show-time"
@@ -181,6 +165,29 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search movies..."
+              className="input input-bordered w-full max-w-xs"
+            />
+            <button className="absolute right-0 top-0 mt-3 mr-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 text-gray-500"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1111.5 4.5a7.5 7.5 0 017.15 12.15z"
+                />
+              </svg>
+            </button>
+          </div>
           {/* theme switch */}
           <label className="swap swap-rotate mr-2">
             <input

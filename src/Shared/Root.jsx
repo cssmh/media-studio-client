@@ -13,7 +13,6 @@ import MovieDetails from "../Component/MovieDetails";
 import MyProfile from "../Component/MyProfile";
 import { getMovieDetails, getTypeMovies } from "../Api/movie";
 import AllMovies from "../Pages/AllMovies";
-import SingleMovie from "../Pages/SingleMovie";
 import ShowTime from "../Pages/ShowTime";
 import TopRated from "../Pages/TopRated";
 
@@ -34,11 +33,10 @@ const Root = createBrowserRouter([
           </PrivateRoute>
         ),
       },
-      { path: "/single-movie", element: <SingleMovie /> },
       { path: "/show-time", element: <ShowTime /> },
       { path: "/top-rated", element: <TopRated /> },
       {
-        path: "/add-movies",
+        path: "/add-movie",
         element: (
           <PrivateRoute>
             <AddProduct />

@@ -1,7 +1,7 @@
 import banner1 from "../assets/banner_1.jpg";
 import banner2 from "../assets/banner_2.jpg";
 
-const Offer = () => {
+const SpecialOffer = () => {
   return (
     <div className="flex justify-center items-center my-9 w-full overflow-hidden">
       <img
@@ -18,4 +18,4 @@ const Offer = () => {
   );
 };
 
-export default Offer;
+export default SpecialOffer;

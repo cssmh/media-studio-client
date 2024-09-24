@@ -13,29 +13,25 @@ const AllMovies = () => {
   }
 
   return (
-    <div className="py-3 max-w-7xl mx-auto">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-          {data.map((movie) => (
+    <div className="container mx-auto px-4 py-10">
+      <h2 className="text-3xl font-bold mb-6">Now Playing</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {data.map((movie) => (
+          <div key={movie._id} className="bg-white p-4 rounded shadow-md">
+            <img
+              src={movie.image}
+              alt={movie.name}
+              className="w-full h-64 object-cover rounded"
+            />
+            <h3 className="text-xl font-semibold mt-4">{movie.name}</h3>
             <Link
-              key={movie._id}
               to={`/details/${movie._id}`}
-              className="relative block overflow-hidden rounded-lg shadow-lg transition-transform transform hover:scale-105 duration-300"
+              className="text-blue-500 hover:underline mt-2 inline-block"
             >
-              <img
-                src={movie.image}
-                alt={movie.name}
-                className="w-full h-80 object-cover"
-              />
-              <div className="absolute bottom-0 w-full bg-gradient-to-t from-black via-transparent to-transparent p-4">
-                <h3 className="text-md font-bold text-white">
-                  {movie.name} Dual Audio Hindi ORG 1080p 720p 480p BluRay x264
-                  ESubs
-                </h3>
-              </div>
+              View Details
             </Link>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </div>
   );

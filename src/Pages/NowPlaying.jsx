@@ -1,45 +1,52 @@
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { getTopMovies } from "../Api/movie";
+import { getNowPlaying } from "../Api/movie";
 
 const NowPlaying = () => {
   const { data = [] } = useQuery({
-    queryKey: ["topMovies"],
-    queryFn: getTopMovies,
+    queryKey: ["nowPlaying"],
+    queryFn: getNowPlaying,
   });
 
   return (
-    <div className="py-12">
+    <div className="my-12">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
+        <h2 className="text-3xl font-extrabold text-center mb-8 text-gray-800">
           Now Playing
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {data?.slice(6, 10).map((movie) => (
+          {data?.slice(0, 4).map((movie) => (
             <Link
               key={movie._id}
               to={`/details/${movie._id}`}
-              className="relative block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105 bg-white"
+              className="relative block rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300 transform hover:scale-105 bg-white"
             >
-              <div className="flex items-center">
+              <div className="relative h-60">
                 <img
                   src={movie.image}
                   alt={movie.name}
-                  className="w-1/3 h-40 object-cover transition-transform duration-300 transform hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                 />
-                <div className="p-4 w-2/3">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                <div className="absolute bottom-0 p-4">
+                  <h3 className="text-2xl font-bold text-white">
                     {movie.name}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-3">
-                    Dual Audio Hindi ORG 1080p, 720p, 480p BluRay x264 ESubs
-                  </p>
-                  <span className="inline-block bg-red-600 text-white px-4 py-1 rounded-full shadow-md hover:bg-red-700 transition duration-200">
+                </div>
+              </div>
+              <div className="p-4">
+                <p className="text-sm text-gray-600 mb-3">
+                  Dual Audio Hindi ORG 1080p, 720p, 480p BluRay x264 ESubs
+                </p>
+                <div className="flex justify-between items-center">
+                  <span className="inline-block bg-gradient-to-r from-red-600 to-pink-500 text-white px-6 py-2 rounded-full shadow-md hover:bg-gradient-to-r hover:from-red-700 hover:to-pink-600 transition duration-300 transform hover:scale-105">
                     Watch Now
+                  </span>
+                  <span className="text-sm text-gray-500 italic">
+                    Rating: {movie.rating}⭐
                   </span>
                 </div>
               </div>
-              <div className="absolute inset-0 bg-black opacity-20 transition-opacity duration-300 hover:opacity-30"></div>
             </Link>
           ))}
         </div>
