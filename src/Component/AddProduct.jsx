@@ -8,7 +8,6 @@ const AddProduct = () => {
     const name = form.name.value;
     const image = form.image.value;
     const media = form.media_name.value;
-    const media_type = form.media_type.value;
     const price = parseFloat(form.price.value);
     const description = form.description.value;
     const rating = parseFloat(form.rating.value);
@@ -17,7 +16,6 @@ const AddProduct = () => {
       name,
       image,
       media,
-      media_type,
       price,
       description,
       rating,
@@ -83,23 +81,6 @@ const AddProduct = () => {
           <option value="warner_bros">Warner Bros</option>
           <option value="universal_pictures">Universal Pictures</option>
           <option value="amazon_studios">Amazon Studios</option>
-        </select>
-      </div>
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Type</span>
-        </label>
-        <select
-          id="media_type"
-          name="media_type"
-          className="input input-bordered"
-          style={{ outline: "none" }}
-          aria-label="Select type of media"
-        >
-          <option value="Movie">Movie</option>
-          <option value="Series">TV Series</option>
-          <option value="Animation">Animation</option>
-          <option value="Anime">Anime</option>
         </select>
       </div>
       <div className="form-control">

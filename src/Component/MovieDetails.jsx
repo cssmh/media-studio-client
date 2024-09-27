@@ -8,10 +8,10 @@ import { addBooking } from "../Api/movie";
 const MovieDetails = () => {
   const { user } = useAuth();
   const loadDetailsData = useLoaderData();
-  const { _id, name, image, media, media_type, price, description, rating } =
+  const { _id, name, image, media, price, description } =
     loadDetailsData;
 
-  const [showModal, setShowModal] = useState(false); // State to manage modal visibility
+  const [showModal, setShowModal] = useState(false);
   const navigateTo = useNavigate();
 
   const openModal = () => {
@@ -34,17 +34,14 @@ const MovieDetails = () => {
       };
 
       try {
-        const response = await addBooking(dataToDatabase);
-        if (response?.insertedId) {
-          swal("Good job!", `${name} has been added to your cart!`, "success");
-          navigateTo("/my-cart");
+        const res = await addBooking(dataToDatabase);
+        if (res?.insertedId) {
+          swal("Good job!", "Booking added", "success");
+          navigateTo("/my-bookings");
         }
       } catch (error) {
-        console.error("Error adding to cart:", error);
         swal("Oops!", "Something went wrong. Please try again.", "error");
       }
-    } else {
-      swal("Oops!", "Please select at least one seat.", "warning");
     }
   };
 
@@ -58,8 +55,10 @@ const MovieDetails = () => {
       <div className="space-y-2 px-12 md:px-0">
         <h1 className="text-3xl">{name}</h1>
         <p>
-          <span className="text-green-500 capitalize">{media.replace(/_/g, " ")}</span>{" "}
-          <span className="text-red-500">{media_type}</span>
+          <span className="text-green-500 capitalize">
+            {media.replace(/_/g, " ")}
+          </span>{" "}
+          <span className="text-red-500">Movie</span>
         </p>
         <p>
           Price: <span className="text-blue-500">{price}</span> BDT

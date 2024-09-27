@@ -1,14 +1,10 @@
 import useAuth from "../hooks/useAuth";
 import LoginModal from "../Component/LoginModal";
+import Loader from "../Component/Loader";
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
-  if (loading) {
-    <div className="flex justify-center my-12">
-      <span className="loading loading-dots loading-lg"></span>
-    </div>;
-    return;
-  }
+  if (loading) return <Loader />;
 
   if (user) return children;
   return <LoginModal isOpen={true} onClose={false} />;

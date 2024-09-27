@@ -20,15 +20,15 @@ const MyProfile = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 md:p-8">
-      <div className="flex flex-col md:flex-row justify-center items-center md:gap-8 mb-8">
+    <div className="p-4 md:p-8">
+      <div className="flex justify-center items-center md:gap-8 mb-8">
         <img
           src={photoURL}
           alt="Profile"
-          className="w-32 h-32 md:w-40 md:h-40 rounded-full shadow-lg border-4 border-red-500"
+          className="w-20 h-20 md:w-24 md:h-24 rounded-full shadow-lg border-4 border-red-500"
         />
         <div className="text-center md:text-left">
-          <h1 className="text-4xl font-bold text-gray-800">
+          <h1 className="md:text-xl font-bold text-gray-800">
             Hi, {displayName}
           </h1>
           <p className="text-gray-600">{email}</p>
@@ -44,7 +44,7 @@ const MyProfile = () => {
         onSubmit={handleUpdate}
         className="border shadow-lg rounded-lg p-6 max-w-lg mx-auto bg-white"
       >
-        <h2 className="text-3xl font-semibold mb-6 text-center text-gray-800">
+        <h2 className="md:text-xl font-semibold mb-6 text-center text-gray-800">
           Update Info
         </h2>
         <div className="mb-4">

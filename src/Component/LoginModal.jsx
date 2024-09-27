@@ -9,7 +9,7 @@ const LoginModal = ({ isOpen, onClose }) => {
   const getEmail = useRef(null);
   const { createUser, loginUser, updateUser, emailVerification } = useAuth();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
@@ -20,21 +20,21 @@ const LoginModal = ({ isOpen, onClose }) => {
       return;
     }
 
-    loginUser(email, password)
-      .then(() => {
-        toast.success("User login successful");
-        onClose(); 
-      })
-      .catch((err) => {
-        const message =
-          err.code === "auth/user-not-found"
-            ? "User not found. Please register."
-            : "Incorrect password. Please try again.";
-        toast.error(message);
-      });
+    try {
+      await loginUser(email, password);
+      toast.success("Login successful");
+      onClose();
+    } catch (error) {
+      const message =
+        error.code === "auth/user-not-found"
+          ? "User not found. Please register."
+          : "Incorrect password. Please try again.";
+      toast.error(message);
+      console.log(error);
+    }
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -49,19 +49,17 @@ const LoginModal = ({ isOpen, onClose }) => {
       return;
     }
 
-    createUser(email, password)
-      .then(() => {
-        toast.success("User registered successfully");
-        updateUser(name)
-          .then(() => {
-            emailVerification().then(() =>
-              toast.success("Check your email to verify your account!")
-            );
-            onClose();
-          })
-          .catch((err) => toast.error(err.message));
-      })
-      .catch((err) => toast.error(err.message));
+    try {
+      await createUser(email, password);
+      toast.success("User registered successfully");
+      await updateUser(name);
+      await emailVerification();
+      toast.success("Check your email to verify your account!");
+      onClose();
+    } catch (error) {
+      toast.error(error.message);
+      console.log(error);
+    }
   };
 
   return (
@@ -96,8 +94,9 @@ const LoginModal = ({ isOpen, onClose }) => {
                   type="text"
                   name="name"
                   placeholder="Enter Your Name"
-                  className="input input-bordered"
+                  className="border p-2 rounded-lg"
                   required={isRegister}
+                  style={{ outline: "none" }}
                 />
               </div>
             )}
@@ -109,9 +108,10 @@ const LoginModal = ({ isOpen, onClose }) => {
                 type="email"
                 ref={getEmail}
                 name="email"
-                placeholder="Enter your email address"
-                className="input input-bordered"
                 required
+                placeholder="Enter your email address"
+                className="border p-2 rounded-lg"
+                style={{ outline: "none" }}
               />
             </div>
             <div className="form-control relative">
@@ -121,12 +121,13 @@ const LoginModal = ({ isOpen, onClose }) => {
               <input
                 type={viewPassword ? "password" : "text"}
                 name="password"
-                placeholder="Enter your password"
-                className="input input-bordered"
                 required
+                placeholder="Enter your password"
+                className="border p-2 rounded-lg"
+                style={{ outline: "none" }}
               />
               <span
-                className="absolute top-[50px] right-3 cursor-pointer"
+                className="absolute top-[49px] right-3 cursor-pointer"
                 onClick={() => setViewPassword(!viewPassword)}
                 aria-label={viewPassword ? "Show password" : "Hide password"}
               >
@@ -142,7 +143,7 @@ const LoginModal = ({ isOpen, onClose }) => {
               </button>
             </div>
           </form>
-          <div className="modal-action mt-2">
+          <div className="modal-action mt-0">
             <button className="btn" onClick={onClose}>
               Close
             </button>

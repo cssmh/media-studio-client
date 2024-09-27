@@ -7,7 +7,7 @@ const CineUpdate = () => {
   const { user } = useAuth();
   const admin = user?.email === import.meta.env.VITE_admin;
   const loadAllData = useLoaderData();
-  const { _id, name, image, media, media_type, price, description, rating } =
+  const { _id, name, image, media, price, description, rating } =
     loadAllData;
   const navigateTo = useNavigate();
 
@@ -18,7 +18,6 @@ const CineUpdate = () => {
     const name = form.name.value;
     const image = form.image.value;
     const media = form.media_name.value;
-    const media_type = form.media_type.value;
     const price = form.price.value;
     const description = form.description.value;
     const rating = form.rating.value;
@@ -26,7 +25,6 @@ const CineUpdate = () => {
       name,
       image,
       media,
-      media_type,
       price,
       description,
       rating,
@@ -84,23 +82,6 @@ const CineUpdate = () => {
           <option value="warner_bros">Warner Bros</option>
           <option value="universal_pictures">Universal Pictures</option>
           <option value="amazon_studios">Amazon Studios</option>
-        </select>
-      </div>
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text">Type</span>
-        </label>
-        <select
-          id="2"
-          name="media_type"
-          defaultValue={media_type}
-          className="input input-bordered"
-          style={{ outline: "none" }}
-        >
-          <option value="Movie">Movie</option>
-          <option value="Series">TV Series</option>
-          <option value="Animation">Animation</option>
-          <option value="Anime">Anime</option>
         </select>
       </div>
       <div className="form-control">

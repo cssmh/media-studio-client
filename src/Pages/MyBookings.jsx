@@ -3,6 +3,7 @@ import swal from "sweetalert";
 import useAuth from "../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import { addPayment, deleteMyBooking, getMyBookings } from "../Api/movie";
+import Loader from "../Component/Loader";
 
 const MyBookings = () => {
   const { user } = useAuth();
@@ -81,18 +82,18 @@ const MyBookings = () => {
     }, 0);
   };
 
-  if (isLoading) return <p className="text-center">Loading...</p>;
+  if (isLoading) return <Loader />
 
   const totalAmount = calculateTotalAmount();
 
   return (
     <div className="max-w-7xl mx-auto mt-4">
-      <h1 className="text-2xl text-center mb-3 font-semibold">
-        Total Cart Items: {data.length}
+      <h1 className="text-xl text-center mb-3 font-semibold">
+        Total Booking Items: {data.length}
       </h1>
       <div className="overflow-x-auto">
         <table className="min-w-full divide-y divide-base-200">
-          <thead className="bg-gray-800 text-white">
+          {/* <thead className="bg-gray-800 text-white">
             <tr>
               <th className="px-3 py-3 text-left text-xs font-medium uppercase tracking-wider">
                 <input
@@ -129,7 +130,7 @@ const MyBookings = () => {
                 Actions
               </th>
             </tr>
-          </thead>
+          </thead> */}
           <tbody className="divide-y divide-base-200">
             {data.map((booking) => (
               <tr
