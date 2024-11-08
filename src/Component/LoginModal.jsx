@@ -55,7 +55,7 @@ const LoginModal = ({ isOpen, onClose }) => {
       await updateUser(name);
       await emailVerification();
       toast.success("Check your email to verify your account!");
-      onClose();
+      onClose(); // Close the modal after successful registration
     } catch (error) {
       toast.error(error.message);
       console.log(error);

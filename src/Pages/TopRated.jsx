@@ -33,7 +33,9 @@ const topRatedItems = [
 const TopRated = () => {
   return (
     <div className="container mx-auto px-4 py-6">
-      <h2 className="text-2xl font-semibold mb-6 text-center">Top Rated Movies</h2>
+      <h2 className="text-2xl font-semibold mb-6 text-center">
+        Top Rated Movies
+      </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {topRatedItems.map((item) => (
           <div
