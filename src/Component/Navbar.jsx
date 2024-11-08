@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/cinemix.webp";
+import logo from "../assets/cine.png";
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import LoginModal from "./LoginModal";
@@ -196,38 +196,36 @@ const Navbar = () => {
               <path d="M21.64,13a1,1,0,0,0-1.11-.21A7,7,0,0,1,12.7,3.47a1,1,0,0,0-.75-1.2A9,9,0,1,0,21.64,13Z" />
             </svg>
           </label>
-          {user ? (
-            <div className="dropdown dropdown-end">
-              <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user?.photoURL || logo} alt={user?.displayName} />
+          <div className="dropdown dropdown-end">
+            {user ? (
+              <div className="flex items-center">
+                <div tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    <img src={user?.photoURL} alt={user?.displayName} />
+                  </div>
                 </div>
+                <button
+                  className="bg-red-600 text-white p-1 rounded-lg"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
               </div>
-              <ul
-                tabIndex={0}
-                className="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            ) : (
+              <button
+                onClick={() => setLoginModalOpen(true)}
+                className="text-xl text-gray-600"
               >
-                <li>
-                  <Link to="/profile" className="justify-between">
-                    Profile
-                  </Link>
-                </li>
-                <li>
-                  <button onClick={handleLogout}>Log Out</button>
-                </li>
-              </ul>
-            </div>
-          ) : (
-            <button
-              onClick={() => setLoginModalOpen(true)}
-              className="text-xl text-gray-600"
-            >
-              Log In
-            </button>
-          )}
+                Log In
+              </button>
+            )}
+          </div>
         </div>
       </div>
-      <LoginModal open={isLoginModalOpen} setOpen={setLoginModalOpen} />
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setLoginModalOpen(false)}
+      />
     </div>
   );
 };

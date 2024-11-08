@@ -8,7 +8,6 @@
 
 - [Star CineMix on Firebase](https://cinemix-2ceee.web.app)
 - [Star CineMix on Netlify](https://cinemamix.netlify.app)
-- [Star CineMix on Surge](https://cinemix.surge.sh)
 
 ## Table of Contents
 

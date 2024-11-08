@@ -16,7 +16,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   }
-  return <LoginModal isOpen={true} onClose={handleModalClose} />;
+  return <LoginModal isOpen={true} onClose={handleModalClose} replace />;
 };
 
 export default PrivateRoute;

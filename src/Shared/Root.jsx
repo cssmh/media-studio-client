@@ -6,7 +6,6 @@ import PrivateRoute from "./PrivateRoute";
 import AddProduct from "../Component/AddProduct";
 import CineUpdate from "../Component/CineUpdate";
 import MovieDetails from "../Component/MovieDetails";
-import MyProfile from "../Component/MyProfile";
 import AllMovies from "../Pages/AllMovies";
 import ShowTime from "../Pages/ShowTime";
 import TopRated from "../Pages/TopRated";
@@ -63,14 +62,6 @@ const Root = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => getMovieDetails(params.id),
-      },
-      {
-        path: "/my-profile",
-        element: (
-          <PrivateRoute>
-            <MyProfile />
-          </PrivateRoute>
-        ),
       },
     ],
   },

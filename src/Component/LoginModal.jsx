@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 
 const LoginModal = ({ isOpen, onClose }) => {
+  console.log(location);
   const [viewPassword, setViewPassword] = useState(true);
   const [isRegister, setIsRegister] = useState(false);
   const getEmail = useRef(null);
@@ -65,12 +66,12 @@ const LoginModal = ({ isOpen, onClose }) => {
   return (
     isOpen && (
       <div className="modal modal-open">
-        <div className="modal-box w-96 p-6">
-          <h1 className="text-custom-blue text-xl text-center font-semibold border-b pb-4">
+        <div className="modal-box w-96 p-5">
+          <h1 className="text-custom-blue text-xl text-center font-semibold mb-3 border-b pb-2">
             {isRegister ? "Register your account" : "Login to your account"}
           </h1>
           <button
-            className={`btn btn-sm ${!isRegister ? "btn-active" : ""}`}
+            className={`btn mr-2 btn-sm ${!isRegister ? "btn-active" : ""}`}
             onClick={() => setIsRegister(false)}
           >
             Login
