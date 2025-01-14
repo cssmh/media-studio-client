@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import useAuth from "../hooks/useAuth";
 
 const LoginModal = ({ isOpen, onClose }) => {
-  console.log(location);
   const [viewPassword, setViewPassword] = useState(true);
   const [isRegister, setIsRegister] = useState(false);
   const getEmail = useRef(null);
